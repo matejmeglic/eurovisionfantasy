@@ -1,0 +1,75 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+
+{% load polls_extras %}
+{% if questions %}
+
+
+<section class="get-in-touch">
+    <h1 class="title">Ocenjevanje</h1>
+
+    <form class="contact-form row" method="post" action="{% url 'dryRunGrades' %}">
+        {% csrf_token %}
+
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+        {% for question in questions %}
+        <p class="subtitle">Vprašanje {{forloop.counter}}: {{ question.question }}</p>
+
+        {%if question.type == "textbox" %}
+        <input type="text" class="input-text js-input" name={{question.id}}></input>
+        <br /> <br />
+
+        {% elif question.type == "multipleselect" %}
+        {% for value in question.values %}
+        {% with question.id|addstr:"-"|addstr:forloop.counter as generated_key %}
+        <div class="form-field col-lg-3"> 
+            <input type="checkbox" class="input-other js-input" id={{value}} name={{generated_key}} value={{value}}>
+              <label class="input-other js-input" for={{value}}>{{value}}</label>
+        </div>
+        {% endwith %}
+        {% endfor %}
+        <br /> <br />
+
+        {% elif question.type == "boolean" %}
+          <input type="radio" class="input-other js-input" id="True" name={{question.id}} value="True">
+          <label class="input-other js-input" for="True">DA</label><br>
+          <input type="radio" class="input-other js-input" id="False" name={{question.id}} value="False">
+          <label class="input-other js-input" for="False">NE</label><br>
+        <br /> <br />
+
+        {% elif question.type == "numvalue" %}
+        <input type="number" class="input-text js-input" min="0" name={{question.id}} value={{value}} />
+        <br /> <br />
+
+        {% elif question.type == "radiobutton" %}
+        {% for value in question.values %}
+          <input type="radio" class="input-other js-input" id={{value}} name={{question.id}} value={{value}}>
+          <label class="input-other js-input" for={{value}}>{{value}}</label><br>
+        {% endfor %}
+        <br /> <br />
+
+        {% else %}
+        <li>Here be dragons.</li>
+        {% endif %}
+
+        {%if question.grade_description != None %}
+        <p class="p_align">{{question.grade_description}}</p>
+        {% endif %}
+
+        {% endfor %}
+
+        {% else %}
+        <h2>Trenutno ni izbranih kvizov za ocenjevanje.</h2>
+        {% endif %}
+
+        <div class="form-field col-lg-12">
+            <input class="submit-btn" type="submit" value="Zaženi Dry Run">
+        </div>
+    </form>
+
+</section>
+
+
+{% endblock %}

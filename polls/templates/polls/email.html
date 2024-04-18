@@ -1,0 +1,18 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+
+{% if user.is_staff %}
+<h1>Mailing lista</h1>
+
+{% if emails %}
+<p>{{emails}}</p>
+{% else %}
+<p>NO EMAILS FOUND IN THE DB.</p>
+
+{% endif %}
+{% else %}
+<p>Nisi admin, pa neki šariš. Oooo, ti, ti, ti... </p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+
+
+<section class="get-in-touch">
+    <h1 class="title">Eurovision Fantasy</h1>
+    <h2 class="title">Edine volitve, ki zares štejejo</h2>
+
+    <div class="contact-form row">
+        <a href="/results"><input class="submit-btn" value="Kje so rezultati?"></a>
+    </div>
+
+    <br />
+    <p>Zdravo, hvala ker si se oglasil/a na tej zabavi.</p>
+    <p class="text-justify">Smo <b><a href="mailto:barbara.vidmajer@gmail.com">Barbara</a></b> <i>[idejna vodja
+            za fantasy in
+            kandidatka za prva mesta]</i>, <a href="mailto:crt.jaklic@gmail.com"><b>Črt</b></a> <i>[mojster
+            vprašanj in
+            ocenjevanja, ki je
+            prišel na idejo o fantasyju]</i> in
+        <a href="mailto:matej@matejmeglic.com"><b>Matej</b></a> <i>[ki
+            realno
+            nima nič zraven, samo všeč mu je in je napisal ta app, pa se zdaj nekaj
+            štuli</i> in upava, da bova
+        lahko pomagala dvigniti
+        navdušenje ob Evrovizijskem tekmovanju na nov, nesluten nivo.
+    </p>
+    <p class="text-justify">Konec koncev gre za nesmrtno slavo, večjo kot jo premorejo
+        skupine, ki
+        dosežejo nič točk. O zmagovalcu tega tekmovanja se govori vse leto, izkušnje veljajo, stavnice kar
+        pokajo od energije,
+        zadnji iz
+        prejšnjega leta pa v upanju na boljšo udeležbo celo spišejo aplikacijo, da bi le lahko zadovoljili
+        bogove
+        Evrovizije.</p>
+    <p>Dobr sva se spomn'la, ane?</p>
+    <br />
+    <h3 class="title">Pravila igre</h3>
+    <p class="text-justify">Kako poteka glasovanje:</p>
+    <ul class="text-justify">
+        <li><b>Nujno vpiši svoje ime in priimek</b> (ta podatek bo viden, da lahko vsem pokažemo kdo je car
+            <i>[če
+                nočeš razkriti priimka, napiši nekaj unique, da ne bo 5x Eva]</i>)<b> in tvoj email</b> (ne bo
+            viden
+            na
+            internetu, potrebujeva ga, da lahko v bazi ločiva odgovore na prejšnjem primeru uporabljenih Ev' za
+            točkovanje, prav tako pa si s tem zagotoviš
+            možnosti obvestila o morebitni
+            nagradi, ter o
+            prihodnjih
+            kvizih).
+        </li>
+        <li>Pozorno sledi navodilom aplikacije, poglej si točkovanje in izberi pravi odgovor (ali primerno
+            število
+            odgovorov <i>[v primeru neupoštevanja pravil si pridržujeva pravico, da odštejeva oceno]</i>).</li>
+        <li>Glas oddaj do konca televotinga - drugače ne bo štel.</li>
+        <li><b>Posamičen kviz izpolniš samo enkrat.</b></li>
+        <li>Če slučajno naletiš na napako na strani, nama to javi. In pozorno preberi napako, navadno jo
+            lahko rešiš
+            tako, da greš en korak nazaj, spremeniš vrednost in ponovno poskusiš z oddajo.</li>
+        <li>Počakaj na končno oceno, ki bo znana nekaj trenutkov po uradni razglasitvi <a href="/results">tukaj</a>.
+        </li>
+        <li>S svojim rezultatom se lahko celo leto hvališ prijateljem in znancem. Bonus točke, če koga
+            ustaviš na ulici
+            in mu poveš, kakšen je tvoj dosežek v fantasyju.</li>
+    </ul>
+    <br />
+    <h3 class="title">Pejd na glasovanje</h3>
+
+    <div class="contact-form row">
+        <div class="form-field col-lg-12">
+            <a href="{% url 'vote' %}">
+                <input class="submit-btn" type="submit" value="Glasuj, kaj te je strah?">
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

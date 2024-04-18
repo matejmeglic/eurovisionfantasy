@@ -1,0 +1,103 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+
+{% load polls_extras %}
+{% if questions %}
+
+<section class="get-in-touch">
+    <h1 class="title">Glasovanje</h1>
+    <h2 class="subtitle">Zdaj gre zares - najprej podatki</h2>
+
+    <form class="contact-form row" method="post" action="{% url 'storeVotes' %}">
+        {% csrf_token %}
+
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+        <div class="form-field col-xs-12">
+            <p><b>Email</b> <i>(ne bo objavljen, potrebujemo za identifikacijo in komunikacijo za feedback)</i></p>
+            <input type="email" class="input-text js-input" id="email" name="email"></input>
+        </div>
+
+        <div class="form-field col-xs-12">
+            <p><b>Ime in priimek ali Vzdevek</b></p>
+            <input type="text" class="input-text js-input" id="name" name="name"></input>
+        </div>
+
+        <div class="form-field col-xs-12">
+            <p><b>Skupina</b> <i>(ni obvezno, omogoča pa da se lokalni sotekmovalci hitreje najdejo)</i></p>
+            <input type="text" class="input-text js-input" id="group" name="group"></input>
+        </div>
+
+        {% for question in questions %}
+        <p class="subtitle">Vprašanje {{forloop.counter}}: {{ question.question }}</p>
+
+        {%if question.type == "textbox" %}
+        <div class="form-field col-xs-12">
+            <input type="text" class="input-text js-input" name={{question.id}}></input>
+        </div>
+        <br /> <br />
+
+        {% elif question.type == "multipleselect" %}
+
+        {% for value in question.values %}
+        {% with question.id|addstr:"-"|addstr:forloop.counter as generated_key %}
+
+
+        <input type="checkbox" class="input-other js-input inline_class" id={{value}} name={{generated_key}}
+            value={{value}}>
+
+        <label class="input-other js-input" for={{value}}>{{value}}</label>
+        {% endwith %}
+        {% endfor %}
+
+        <br /> <br />
+
+        {% elif question.type == "boolean" %}
+
+          <input type="radio" class="input-other js-input" id="True" name={{question.id}} value="True">
+          <label class="input-other js-input" for="True">DA</label><br>
+          <input type="radio" class="input-other js-input" id="False" name={{question.id}} value="False">
+          <label class="input-other js-input" for="False">NE</label><br>
+
+        <br /> <br />
+
+        {% elif question.type == "numvalue" %}
+        <div class="form-field col-xs-12">
+            <input type="number" class="input-text js-input" min="0" name={{question.id}} value={{value}} />
+        </div>
+        <br /> <br />
+
+        {% elif question.type == "radiobutton" %}
+        {% for value in question.values %}
+          <input type="radio" class="input-other js-input" id={{value}} name={{question.id}} value={{value}}>
+          <label class="input-other js-input" for={{value}}>{{value}}</label><br>
+        {% endfor %}
+        <br /> <br />
+
+        {% else %}
+        <li>Here be dragons.</li>
+        {% endif %}
+
+        {%if question.grade_description != None %}
+        <p class="p_align">{{question.grade_description}}</p>
+        {% endif %}
+
+        {% endfor %}
+
+        {% else %}
+        <h2>Trenutno ni aktivnih kvizov.</h2>
+        {% endif %}
+
+        <div class="form-field col-xs-12">
+            <ul>
+                <li>Še enkrat preglej svoje odgovore.</li>
+                <li>Če nisi odgovoril/a na vprašanje, ne bo točk.</li>
+                <li>Ko oddaš vprašalnik, ni poti nazaj.</li>
+            </ul>
+            <input class="submit-btn" type="submit" value="Oddaj svoj glas">
+        </div>
+    </form>
+
+</section>
+{% endblock %}
