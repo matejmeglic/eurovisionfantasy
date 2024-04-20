@@ -1,1 +1,1 @@
-web: gunicorn eurofantasy-mm.wsgi
+web: gunicorn eurofantasy.wsgi
