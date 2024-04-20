@@ -10,10 +10,8 @@ gunicorn = "*"
 pip = "*"
 django-bootstrap-v5 = "*"
 python-dotenv = "*"
-django-heroku = "*"
 typing-extensions = "*"
 psycopg2 = "*"
-
 
 [dev-packages]
 
