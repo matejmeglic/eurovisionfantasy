@@ -1,1 +1,1 @@
-web: gunicorn djangoheroku.wsgi
+web: gunicorn eurofantasy-mm.wsgi

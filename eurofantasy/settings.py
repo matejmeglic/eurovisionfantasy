@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-#import django_heroku
+import django_heroku
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -157,7 +157,7 @@ SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
 
 
 
