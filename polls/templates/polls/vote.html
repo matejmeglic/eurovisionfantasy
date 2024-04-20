@@ -94,7 +94,7 @@
         {% endif %}
 
         {% if question.type == "numvalue" %}
-        {%if question.grade_range != 0 %}
+        {%if question.grade_range != None %}
         <p class="p_align">Upoštevani bodo odgovori v rangu +- {{question.grade_range}} enot.</p>
         {% endif %}
         {% endif %}
