@@ -11,8 +11,9 @@ pip = "*"
 django-bootstrap-v5 = "*"
 python-dotenv = "*"
 django-heroku = "*"
+typing-extensions = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.12.3"
+python_version = "3.12."
