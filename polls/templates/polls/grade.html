@@ -74,6 +74,10 @@
         {% endif %}
         {% endif %}
 
+        {%if question.max_choices != None %}
+        <p class="p_align">Dovoljena izbira do {{question.max_choices}} vrednosti.</p>
+        {% endif %}
+
         {% endfor %}
 
         {% else %}
