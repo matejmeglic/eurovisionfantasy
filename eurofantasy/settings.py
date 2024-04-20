@@ -32,8 +32,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG_VALUE') 
 
-ALLOWED_HOSTS = []
-#ALLOWED_HOSTS = ["djangoheroku4711.herokuapp.com"]
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["eurofantasy-mm.herokuapp.com"]
 
 
 # Application definition
