@@ -29,6 +29,9 @@
             <input type="text" class="input-text js-input" id="group" name="group"></input>
         </div>
 
+
+        <p>{{questions}}</p>
+
         {% for question in questions %}
         <p class="subtitle">Vprašanje {{forloop.counter}}: {{ question.question }}</p>
 
@@ -87,9 +90,9 @@
 
         {%if question.grade_partials != None %}
         {%if question.type == "multipleselect" %}
-        <p class="p_align">Delno točkovanje:{{question.grade_partials}}</p>
+        <p class="p_align">Delno točkovanje {{question.grade_partials}} točk.</p>
         {% elif question.type == "boolean" %}
-        <p class="p_align">Odgovor NE je vreden:{{question.grade_partials}} točk.</p>
+        <p class="p_align">Odgovor NE je vreden {{question.grade_partials}} točk.</p>
         {% endif %}
         {% endif %}
 
