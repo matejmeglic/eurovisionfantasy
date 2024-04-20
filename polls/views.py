@@ -41,8 +41,9 @@ def vote(request):
 
     #sort
     questions_sorted = []
-    for question in questions:
-        for original_q in active_question_list:
+    
+    for original_q in active_question_list:
+        for question in questions:
             if original_q == question.get("id"):
                 questions_sorted.append(question)
 
