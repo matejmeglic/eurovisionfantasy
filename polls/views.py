@@ -22,7 +22,7 @@ def vote(request):
         return HttpResponseRedirect(reverse("error"))
     active_question_list = [int(x.strip()) for x in active_polls[0]["question_ids"].split(',') if x]  # get questions
     questions = []
-    for question in Question.objects.filter(id__in=active_question_list): # construct context
+    for question in Question.objects.filter(id__in=active_question_list).order_by('id'): # construct context
         if question.question_values == "" or question.question_values is None :
             check_values = None 
         else:
@@ -122,7 +122,7 @@ def grade(request):
         return HttpResponseRedirect(reverse("error"))
     active_question_list = [int(x.strip()) for x in active_polls[0]["question_ids"].split(',') if x]  # get questions
     questions = []
-    for question in Question.objects.filter(id__in=active_question_list): # construct context
+    for question in Question.objects.filter(id__in=active_question_list).order_by('id'): # construct context
         if question.question_values == "" or question.question_values is None :
             check_values = None 
         else:
