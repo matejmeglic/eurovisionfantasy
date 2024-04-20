@@ -39,8 +39,14 @@ def vote(request):
                    }
         questions.append(content)
 
+    #sort
+    questions_sorted = []
+    for question in questions:
+        for original_q in active_question_list:
+            if original_q == question.get("id"):
+                questions_sorted.append(question)
 
-    context = {"questions": questions, "active_question_list":active_question_list}
+    context = {"questions": questions_sorted, "active_question_list":active_question_list}
     return render(request, "polls/vote.html", context)
 
 
