@@ -83,6 +83,23 @@
         <p class="p_align">{{question.grade_description}}</p>
         {% endif %}
 
+        <p class="p_align">Število točk: {{question.grade}}</p>
+
+        {%if question.grade_partials != None %}
+        {%if question.type == "multipleselect" %}
+        <p class="p_align">Delno točkovanje:{{question.grade_partials}}</p>
+        {% elif question.type == "boolean" %}
+        <p class="p_align">Odgovor NE je vreden:{{question.grade_partials}} točk.</p>
+        {% endif %}
+        {% endif %}
+
+        {% if question.type == "numvalue" %}
+        {%if question.grade_range != 0 %}
+        <p class="p_align">Upoštevani bodo odgovori v rangu +- {{question.grade_range}} enot.</p>
+        {% endif %}
+        {% endif %}
+
+
         {% endfor %}
 
         {% else %}

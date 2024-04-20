@@ -38,7 +38,7 @@ class Question(models.Model):
     )
     question_grade_partials = models.CharField("Multi: Delne točke,Bool: False value", max_length=200, blank=True, null=True)
     question_grade_range =  models.IntegerField(
-        "Rang +-", default=1, blank=True, null=True
+        "Rang +-", default=0, blank=True, null=True
     )
     question_grade_description = models.CharField("Opis ocene", max_length=500, blank=True, null=True)
 
