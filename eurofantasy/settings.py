@@ -12,10 +12,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-import dotenv
-from dotenv import load_dotenv, find_dotenv
-
-load_dotenv(find_dotenv())
+import django_heroku
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,13 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DEBUG_VALUE']
+DEBUG = os.getenv('DEBUG_VALUE') 
 
 ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ["djangoheroku4711.herokuapp.com"]
 
 
 # Application definition
@@ -86,10 +86,21 @@ WSGI_APPLICATION = 'eurofantasy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -130,7 +141,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [(os.path.join(BASE_DIR, 'static'))]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -139,4 +150,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+django_heroku.settings(locals())
+
+
+
 
