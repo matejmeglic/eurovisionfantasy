@@ -29,9 +29,6 @@
             <input type="text" class="input-text js-input" id="group" name="group"></input>
         </div>
 
-        <p>{{active_question_list}}</p>
-        <p>{{questions}}</p>
-
         {% for question in questions %}
         <p class="subtitle">Vprašanje {{forloop.counter}}: {{ question.question }}</p>
 

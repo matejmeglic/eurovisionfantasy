@@ -140,12 +140,21 @@ def grade(request):
                    "max_choices":question.max_choices,
                    "values": check_values,
                    "grade": question.question_grade,
-                   "grade_partials": question.question_grade_partials
+                   "grade_partials": question.question_grade_partials,
+                   "grade_range": question.question_grade_range, 
+                   "grade_description": question.question_grade_description
                    }
         questions.append(content)
 
+    #sort
+    questions_sorted = []
+    
+    for original_q in active_question_list:
+        for question in questions:
+            if original_q == question.get("id"):
+                questions_sorted.append(question)
 
-    context = {"questions": questions, "active_question_list":active_question_list}
+    context = {"questions": questions_sorted, "active_question_list":active_question_list}
     return render(request, "polls/grade.html", context)
 
 def dryRunGrades(request):
