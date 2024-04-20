@@ -1,9 +1,0 @@
-# 3h setup vsega
-# 4h vote del + basic validation - 7
-# 4h vote del dodajanje multiselecta, shranjevanje, routing, error handling - 11
-# 5,5h celotni grading tool do ready to save, veliko dela na različnih možnostih ocen - 16.5
-# 4,5h fe:bootstrap+theme+css+basic layout of all pages, copy - 21
-# 2+1h transforming results, writing season_Grouping and then rewrtiting season grouping - 24
-# 3h completing results view - 27
-# 1h output of all emails + FE fixes + bring group to results - 28
-$ 4h devops for deploy to heroku - 32
