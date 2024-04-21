@@ -25,7 +25,7 @@ if questions %}
       {% endif %} {% if question.grade_description != None %}
       <p class="p_align">Rang: {{question.grade_description}}</p>
       {% endif %} {% if question.max_choices != None %}
-      <p class="p_align">Max izbir: {{question:max_choices}}</p>
+      <p class="p_align">Max izbir: {{question.max_choices}}</p>
       {% endif %} {% for grade in grades %} {% if question.id ==
       grade.question_id %}
       <p class="p_align">Pravilen rezultat: {{grade.question_answer}}</p>
