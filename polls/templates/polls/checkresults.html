@@ -10,11 +10,11 @@ if questions %}
     action="{% url 'storeResults' %}"
   >
     {% csrf_token %} {% if error_message %}
-    <p><strong>{{ error_message }}</strong></p>
+    <p><strong>{{error_message}}</strong></p>
     {% endif %} {% for question in questions %}
     <div>
       <h3 class="subtitle_question p_align">
-        Vprašanje {{forloop.counter}}: {{ question.question }}
+        Vprašanje {{forloop.counter}}: {{question.question}}
       </h3>
       <p class="p_align">
         Opis točkovanja: {{question.question_grade_description}}
@@ -32,7 +32,7 @@ if questions %}
       {% endif %} {% endfor %} {% for answer in answers %} {% if question.id ==
       answer.question_id %}
 
-      <p class="p_align">{{ answer.userName }} - {{ answer.value }}</p>
+      <p class="p_align">{{answer.userName}} - {{answer.value}}</p>
       <div class="p_align">
         <input
           type=" number"
