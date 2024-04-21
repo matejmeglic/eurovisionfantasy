@@ -142,3 +142,4 @@ Question types:
 - 1h output of all emails + FE fixes + bring group to results - 28
 - 4h devops for deploy to heroku - 32
 - 2h fix ordering bugs and extra explanations on vote-grade + readme - 34
+- 1h fix mobile responsiveness - 35

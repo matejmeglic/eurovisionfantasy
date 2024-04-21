@@ -40,7 +40,7 @@
         <br /> <br />
 
         {% elif question.type == "multipleselect" %}
-        <div class="row">
+        <div class="row padding_bottom">
         {% for value in question.values %}
         {% with question.id|addstr:"-"|addstr:forloop.counter as generated_key %}
 
