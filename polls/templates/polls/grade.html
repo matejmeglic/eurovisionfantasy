@@ -11,9 +11,17 @@ if questions %}
   >
     {% csrf_token %} {% if error_message %}
     <p><strong>{{ error_message }}</strong></p>
-    {% endif %} {% for question in questions %}
+    {% endif %} 
+    
+    {% for question in questions %}
     <p class="subtitle_question">Vprašanje {{forloop.counter}}</p>
     <p class="subtitle">{{ question.question }}</p>
+
+    {%if question.type == "textbox" %}
+    <div class="form-field col-xs-12">
+        <input type="text" class="input-text js-input" name={{question.id}}></input>
+    </div>
+    <br /> <br />
 
     {% elif question.type == "multipleselect" %}
     <div class="row padding_bottom">
