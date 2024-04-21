@@ -1,48 +1,41 @@
-{% extends "polls/base.html" %}
-{% block content %}
+{% extends "polls/base.html" %} {% block content %}
 <section class="get-in-touch">
+  {% if results %}
+  <h1 class="title">Rezultati</h1>
 
+  <p class="p_align">
+    Iskrene čestitke. Uspelo nam je, tu so rezultati. Se vidimo naslednje leto,
+    itak?
+  </p>
+  {% for result in results %}
 
-    {% if results %}
-    <h1 class="title">Rezultati</h1>
+  <div class="form-field col-sm-12">
+    <p class="subtitle">
+      <b
+        >{{result.position}} - {{result.season}} - {{result.name}}{% if
+        result.group %} - {{result.group}}{% endif %} -
+        {{result.final_score}}</b
+      >
+    </p>
 
-    <p class="p_align">Iskrene čestitke. Uspelo nam je, tu so rezultati. Se vidimo naslednje leto, itak?</p>
-    {% for result in results %}
-
-    <div class="form-field col-sm-12">
-
-        <p class="subtitle"><b>{{result.position}} - {{result.season}} - {{result.name}} {% if result.group %}(Ekipa
-                {{result.group}}) {% endif %} -
-                {{result.final_score}}</b></p>
-
-        {% for partial_result in result.partials %}
-        <p class="p_align"><i>{{partial_result.0}} - {{partial_result.1}}</i></p>
-
-
-        {% endfor %}
-
-    </div>
-
+    {% for partial_result in result.partials %}
+    <p class="p_align"><i>{{partial_result.0}} - {{partial_result.1}}</i></p>
 
     {% endfor %}
+  </div>
 
+  {% endfor %} {% else %}
+  <h1 class="title">Trenutno ni rezultatov.</h1>
+  <p class="p_align">
+    Kaj pa zdaj? Osveži stran čez 5 minut? Pojej sendvič? Pomij posodo (če si si
+    že prej pripravil sendvič)?
+  </p>
+  {% endif %}
 
-    {% else %}
-    <h1 class="title">Trenutno ni rezultatov.</h1>
-    <p class="p_align">Kaj pa zdaj? Osveži stran čez 5 minut? Pojej sendvič? Pomij posodo (če si si že prej
-        pripravil
-        sendvič)?</p>
-    {% endif %}
-
-    <br /><br />
-    <div class="contact-form row">
-        <a href="/"><input class="submit-btn" value="Nazaj na prvo stran"></a>
-    </div>
-
+  <br /><br />
+  <div class="contact-form row">
+    <a href="/"><input class="submit-btn" value="Nazaj na prvo stran" /></a>
+  </div>
 </section>
-
-
-
-
 
 {% endblock %}

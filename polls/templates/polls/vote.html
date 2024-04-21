@@ -30,7 +30,8 @@
         </div>
 
         {% for question in questions %}
-        <p class="subtitle">Vprašanje {{forloop.counter}}: {{ question.question }}</p>
+        <p class="subtitle">Vprašanje {{forloop.counter}}</p>
+        <p class="subtitle">{{ question.question }}</p>
 
         {%if question.type == "textbox" %}
         <div class="form-field col-xs-12">
@@ -39,26 +40,33 @@
         <br /> <br />
 
         {% elif question.type == "multipleselect" %}
-
+        <div class="row">
         {% for value in question.values %}
         {% with question.id|addstr:"-"|addstr:forloop.counter as generated_key %}
 
-
-        <input type="checkbox" class="input-other js-input inline_class" id={{value}} name={{generated_key}}
+        <div class="col-xs-6 col-lg-3">
+        <input type="checkbox" class="input-other js-input" id={{value}} name={{generated_key}}
             value={{value}}>
 
         <label class="input-other js-input" for={{value}}>{{value}}</label>
+        </div>
         {% endwith %}
         {% endfor %}
+        </div>
 
         <br /> <br />
 
         {% elif question.type == "boolean" %}
-
+        <div class="row">
+            <div class="col-xs-6 col-lg-3">
           <input type="radio" class="input-other js-input" id="True" name={{question.id}} value="True">
-          <label class="input-other js-input" for="True">DA</label><br>
+          <label class="input-other js-input" for="True">DA</label>
+        </div>
+        <div class="col-xs-6 col-lg-3">
           <input type="radio" class="input-other js-input" id="False" name={{question.id}} value="False">
-          <label class="input-other js-input" for="False">NE</label><br>
+          <label class="input-other js-input" for="False">NE</label>
+        </div>
+        </div>
 
         <br /> <br />
 
@@ -69,10 +77,14 @@
         <br /> <br />
 
         {% elif question.type == "radiobutton" %}
+        <div class="row">
         {% for value in question.values %}
+        <div class="col-xs-6 col-lg-3">
           <input type="radio" class="input-other js-input" id={{value}} name={{question.id}} value={{value}}>
           <label class="input-other js-input" for={{value}}>{{value}}</label><br>
+        </div>
         {% endfor %}
+        </div>
         <br /> <br />
 
         {% else %}
