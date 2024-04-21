@@ -1,60 +1,54 @@
-{% extends "polls/base.html" %}
-{% block content %}
-
-{% load polls_extras %}
-
-{% if questions %}
-
+{% extends "polls/base.html" %} {% block content %} {% load polls_extras %} {%
+if questions %}
 
 <section class="get-in-touch">
-    <h1 class="title">Preveri rezultate</h1>
+  <h1 class="title">Preveri rezultate</h1>
 
-    <form class="contact-form row" method="post" action="{% url 'storeResults' %}">
-        {% csrf_token %}
+  <form
+    class="contact-form row"
+    method="post"
+    action="{% url 'storeResults' %}"
+  >
+    {% csrf_token %} {% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+    {% endif %} {% for question in questions %}
+    <div>
+      <h3 class="subtitle_question p_align">
+        Vprašanje {{forloop.counter}}: {{ question.question }}
+      </h3>
+      <p class="p_align">
+        Opis točkovanja: {{question.question_grade_description}}, Točke:
+        {{question.grade}}, Delne točke: {{question.grade_partials}}, Rang:
+        {{question.grade_description}}, Max izbir: {{question:max_choices}}
+      </p>
 
-        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+      {% for grade in grades %} {% if question.id == grade.question_id %}
+      <p class="p_align">Pravilen rezultat: {{grade.question_answer}}</p>
+      {% endif %} {% endfor %} {% for answer in answers %} {% if question.id ==
+      answer.question_id %}
 
-        {% for question in questions %}
-        <div>
-            <h3 class="subtitle p_align">Vprašanje {{forloop.counter}}: {{ question.question }}</h3>
-            <p class="p_align">Opis točkovanja: {{question.question_grade_description}}</p>
+      <p class="p_align">{{ answer.userName }} - {{ answer.value }}</p>
+      <div class="p_align">
+        <input
+          type=" number"
+          class="input-text js-input"
+          id="{{answer.id}}"
+          name="{{answer.id}}"
+          value="{{answer.grade}}"
+        />
+      </div>
 
-            {% for grade in grades %}
-            {% if question.id == grade.question_id %}
-            <p class="p_align">Pravilen rezultat: {{grade.question_answer}}</p>
-            {% endif %}
-            {% endfor %}
+      {% endif %} {% endfor %}
+    </div>
+    {% endfor %} {% else %}
+    <p>No polls are available.</p>
+    {% endif %}
+    <br /><br />
 
-            {% for answer in answers %}
-            {% if question.id == answer.question_id %}
-
-            <p class="p_align">{{ answer.userName }} - {{ answer.value }}</p>
-            <div class="p_align">
-                <input type=" number" class="input-text js-input" id={{answer.id}} name={{answer.id}}
-                    value={{answer.grade}}>
-            </div>
-
-            {% endif %}
-            {% endfor %}
-        </div>
-        {% endfor %}
-
-        {% else %}
-        <p>No polls are available.</p>
-        {% endif %}
-        <br /><br />
-
-
-
-        <div class="form-field col-lg-12">
-            <input class="submit-btn" type="submit" value="Shrani ocene">
-        </div>
-    </form>
-
+    <div class="form-field col-lg-12">
+      <input class="submit-btn" type="submit" value="Shrani ocene" />
+    </div>
+  </form>
 </section>
-
-
-
-
 
 {% endblock %}
