@@ -28,12 +28,11 @@
       <p class="p_align">Rang: {{question.question_grade_range}}</p>
       {% endif %} {% if question.max_choices != None %}
       <p class="p_align">Max izbir: {{question.max_choices}}</p>
-      {% endif %}
-      <br />{% for grade in grades %} <span></span><span></span><span></span
-      ><span></span>{% if question.id == grade.question_id %}
+      {% endif %} {% for grade in grades %}
+      <span></span>{% if question.id == grade.question_id %}
       <p class="p_align">Pravilen rezultat: {{grade.question_answer}}</p>
-      {% endif %} {% endfor %} {% for answer in answers %}
-      <span></span>{% if question.id == answer.question_id %}
+      {% endif %} {% endfor %}<br />
+      {% for answer in answers %} {% if question.id == answer.question_id %}
 
       <p class="p_align">{{answer.userName}} - {{answer.value}}</p>
       <div class="p_align">
