@@ -1,5 +1,5 @@
-{% extends "polls/base.html" %} {% block content %} {% load polls_extras %} {%
-if questions %}
+{% extends "polls/base.html" %} {% block content %} {% load polls_extras %}
+<span></span>{% if questions %}
 
 <section class="get-in-touch">
   <h1 class="title">Preveri rezultate</h1>
@@ -27,10 +27,10 @@ if questions %}
       {% endif %} {% if question.max_choices != None %}
       <p class="p_align">Max izbir: {{question.max_choices}}</p>
       {% endif %} {% for grade in grades %}
-      <br />{% if question.id == grade.question_id %}
+      <span></span>{% if question.id == grade.question_id %}
       <p class="p_align">Pravilen rezultat: {{grade.question_answer}}</p>
       {% endif %} {% endfor %} {% for answer in answers %}
-      <br />{% if question.id == answer.question_id %}
+      <span></span>{% if question.id == answer.question_id %}
 
       <p class="p_align">{{answer.userName}} - {{answer.value}}</p>
       <div class="p_align">
