@@ -94,6 +94,23 @@ body {
     -webkit-text-fill-color: transparent !important;
 }
 
+.get-in-touch .subtitle_results {
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 1.2em;
+    line-height: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #5543ca;
+    background: #5543ca;
+    background: -moz-linear-gradient(left, #f4524d 0%, #5543ca 100%) !important;
+    background: -webkit-linear-gradient(left, #f4524d 0%, #5543ca 100%) !important;
+    background: linear-gradient(to right, #f4524d 0%, #5543ca 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text;
+    -webkit-text-fill-color: transparent !important;
+}
+
 
 
 .p_align {

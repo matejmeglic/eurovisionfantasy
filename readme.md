@@ -116,7 +116,6 @@ Question types:
 - There is a lot going on at the moment where a proper serializer should be. That part could use a rewamp
 - Obvious next step is whitelabeling + user permissions (currently it works without any permissions, emails are stored directly in the db, any setup requires /admin access + staff rights)
 - current codebase is set for heroku, so I just bugfixed on production (build without pipenv preview before), better handling of dev/prod env is crucial
-- be more responsive (FE)
 
 ## What was good/would I do differently (Author's notes)?
 
