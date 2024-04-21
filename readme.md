@@ -1,4 +1,4 @@
-# Eurovision fantasy grading system
+# Eurovision fantasy voting/grading system
 
 ## Why build one?
 
