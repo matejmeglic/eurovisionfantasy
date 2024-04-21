@@ -286,105 +286,108 @@ def gradingcomplete(request):
 def results(request):
     # get all Polls with is_results = True
     polls_results = Poll.objects.filter(is_results=True).values()
-    # get all questions from multiple Polls
-    polls_results_transformed = []
-    for result in polls_results:
-        season = Season.objects.filter(id=result.get("season_id"))
-        context = {
-            "id":result.get("id"),
-            "poll_name":result.get("poll_name"),
-            "season": getattr(season[0],"season_name"),
-            "grouping":result.get("grouping"),
-            "question_ids": [int(x.strip()) for x in result.get("question_ids").split(',') if x]   
-        }
-        polls_results_transformed.append(context)
+    if len(polls_results) > 0:
+        # get all questions from multiple Polls
+        polls_results_transformed = []
+        for result in polls_results:
+            season = Season.objects.filter(id=result.get("season_id"))
+            context = {
+                "id":result.get("id"),
+                "poll_name":result.get("poll_name"),
+                "season": getattr(season[0],"season_name"),
+                "grouping":result.get("grouping"),
+                "question_ids": [int(x.strip()) for x in result.get("question_ids").split(',') if x]   
+            }
+            polls_results_transformed.append(context)
 
-    # get all graded Answers
-    counter = 0
-    grouped_results = []
-    for poll in polls_results_transformed:
-        #print(poll)
-        answers = []
-        for question in Question.objects.filter(id__in=poll.get("question_ids")): # construct context
-            question_id = getattr(question, "id")
-            eligible_answers = Answer.objects.filter(question=question_id).values()
-            for answer in eligible_answers: # construct context
-                content = {
-                    "id": answer.get("id"),
-                    "userEmail": answer.get("userEmail"), # group in grade_grouping
-                    "userName": answer.get("userName"), # render in app
-                    "userGroup": answer.get("userGroup"),
-                    "question": question_id,
-                    "poll": poll.get("poll_name"),
-                    "season": poll.get("season"),
-                    "grade": answer.get("grade")
-                }
-                answers.append(content)
-        polls_results_transformed[counter]["answers"] = answers
+        # get all graded Answers
+        counter = 0
+        grouped_results = []
+        for poll in polls_results_transformed:
+            #print(poll)
+            answers = []
+            for question in Question.objects.filter(id__in=poll.get("question_ids")): # construct context
+                question_id = getattr(question, "id")
+                eligible_answers = Answer.objects.filter(question=question_id).values()
+                for answer in eligible_answers: # construct context
+                    content = {
+                        "id": answer.get("id"),
+                        "userEmail": answer.get("userEmail"), # group in grade_grouping
+                        "userName": answer.get("userName"), # render in app
+                        "userGroup": answer.get("userGroup"),
+                        "question": question_id,
+                        "poll": poll.get("poll_name"),
+                        "season": poll.get("season"),
+                        "grade": answer.get("grade")
+                    }
+                    answers.append(content)
+            polls_results_transformed[counter]["answers"] = answers
 
-        # results per quiz per person
-        grade_grouping_per_email = [] # first use email for grouping per person
-        for answer in answers:
-            if_exists = 0
-            for person in grade_grouping_per_email:
-                #print(person)
-                if person[2] == answer.get("userEmail"):
-                    person[5] += answer.get("grade")
-                    if_exists = 1
-            if if_exists == 0:
-                grade_grouping_per_email.append([answer.get("season"), answer.get("poll"), answer.get("userEmail"), answer.get("userName"), answer.get("userGroup"), answer.get("grade")])
+            # results per quiz per person
+            grade_grouping_per_email = [] # first use email for grouping per person
+            for answer in answers:
+                if_exists = 0
+                for person in grade_grouping_per_email:
+                    #print(person)
+                    if person[2] == answer.get("userEmail"):
+                        person[5] += answer.get("grade")
+                        if_exists = 1
+                if if_exists == 0:
+                    grade_grouping_per_email.append([answer.get("season"), answer.get("poll"), answer.get("userEmail"), answer.get("userName"), answer.get("userGroup"), answer.get("grade")])
 
-        #print(grade_grouping_per_email)
-        for any_result in grade_grouping_per_email:
-            grouped_results.append(any_result)
-        counter+=1
+            #print(grade_grouping_per_email)
+            for any_result in grade_grouping_per_email:
+                grouped_results.append(any_result)
+            counter+=1
 
 
-    # get total season results
-    season_results = []
-    for gresult in grouped_results:
-        if_exists = 0
-        for sresult in season_results:
-            if sresult[0] == gresult[0]: # create arrays instead of strings for future results parsing/concating
-                if sresult[2] == gresult[2]: #check user
-                    sresult[5] += gresult[5]
-                    if_exists = 1
-        if if_exists == 0:
-            season_results.append([gresult[0], "Total", gresult[2], gresult[3], gresult[4], int(gresult[5]) ])
-
-    #build content (unsorted)
-    content_unsorted = []
-    for sresult in season_results:
-        user_content = {
-            "season": sresult[0],
-            "name": sresult[3],
-            "group": sresult[4],
-            "final_score": sresult[5],
-            "partials": []
-        }
+        # get total season results
+        season_results = []
         for gresult in grouped_results:
-            if sresult[0] == gresult[0]: #check season
-                if sresult[3] == gresult[3]: #check user
-                    user_content["partials"].append([gresult[1], gresult[5]]) # remove email from 
-        content_unsorted.append(user_content)
+            if_exists = 0
+            for sresult in season_results:
+                if sresult[0] == gresult[0]: # create arrays instead of strings for future results parsing/concating
+                    if sresult[2] == gresult[2]: #check user
+                        sresult[5] += gresult[5]
+                        if_exists = 1
+            if if_exists == 0:
+                season_results.append([gresult[0], "Total", gresult[2], gresult[3], gresult[4], int(gresult[5]) ])
 
-    #sort content
-    #content_grade = sorted(content_unsorted, key=lambda k: (k['final_score']) , reverse=True) # first pass, sort scoring
-    content_sorted = sorted(content_unsorted, key=lambda k: ( k['season'],k['final_score']) , reverse=True) # second pass, sort seasons 
-    
-    counter = 1
-    season_changed = ""
-    for result in content_sorted:
-        if season_changed == "" or season_changed == result.get("season"):
-            result["position"] = counter
-        else:
-            counter = 1
-            result["position"] = counter
-        counter +=1
-        season_changed= result.get("season")
+        #build content (unsorted)
+        content_unsorted = []
+        for sresult in season_results:
+            user_content = {
+                "season": sresult[0],
+                "name": sresult[3],
+                "group": sresult[4],
+                "final_score": sresult[5],
+                "partials": []
+            }
+            for gresult in grouped_results:
+                if sresult[0] == gresult[0]: #check season
+                    if sresult[3] == gresult[3]: #check user
+                        user_content["partials"].append([gresult[1], gresult[5]]) # remove email from 
+            content_unsorted.append(user_content)
 
+        #sort content
+        #content_grade = sorted(content_unsorted, key=lambda k: (k['final_score']) , reverse=True) # first pass, sort scoring
+        content_sorted = sorted(content_unsorted, key=lambda k: ( k['season'],k['final_score']) , reverse=True) # second pass, sort seasons 
         
-    #build context
-    context = {"results": content_sorted}
+        counter = 1
+        season_changed = ""
+        for result in content_sorted:
+            if season_changed == "" or season_changed == result.get("season"):
+                result["position"] = counter
+            else:
+                counter = 1
+                result["position"] = counter
+            counter +=1
+            season_changed= result.get("season")
+
+            
+        #build context
+        context = {"results": content_sorted}
+    else:
+        context = {}
 
     return render(request, "polls/results.html", context)
