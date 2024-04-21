@@ -98,6 +98,7 @@ body {
     text-align: center;
     font-size: 1.2em;
     line-height: 16px;
+    padding-bottom: 10px;
     color: #5543ca;
     background: #5543ca;
     background: -moz-linear-gradient(left, #f4524d 0%, #5543ca 100%) !important;
