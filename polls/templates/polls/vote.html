@@ -44,7 +44,7 @@
         {% for value in question.values %}
         {% with question.id|addstr:"-"|addstr:forloop.counter as generated_key %}
 
-        <div class="col-xs-6 col-lg-3">
+        <div class="col-6 col-lg-3">
         <input type="checkbox" class="js-input inline_class" id={{value}} name={{generated_key}}
             value={{value}}>
 
@@ -58,11 +58,11 @@
 
         {% elif question.type == "boolean" %}
         <div class="row">
-            <div class="col-xs-6 col-lg-3">
+            <div class="col-6 col-lg-3">
           <input type="radio" class="js-input  inline_class" id="True" name={{question.id}} value="True">
           <label class="js-input inline_class" for="True">DA</label>
         </div>
-        <div class="col-xs-6 col-lg-3">
+        <div class="col-6 col-lg-3">
           <input type="radio" class="js-input  inline_class" id="False" name={{question.id}} value="False">
           <label class="js-input  inline_class" for="False">NE</label>
         </div>
@@ -79,7 +79,7 @@
         {% elif question.type == "radiobutton" %}
         <div class="row">
         {% for value in question.values %}
-        <div class="col-xs-6 col-lg-3">
+        <div class="col-6 col-lg-3">
           <input type="radio" class="js-input inline_class" id={{value}} name={{question.id}} value={{value}}>
           <label class="js-input inline_class" for={{value}}>{{value}}</label><br>
         </div>
