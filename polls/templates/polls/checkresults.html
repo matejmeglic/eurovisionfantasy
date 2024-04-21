@@ -28,8 +28,9 @@
       <p class="p_align">Rang: {{question.question_grade_range}}</p>
       {% endif %} {% if question.max_choices != None %}
       <p class="p_align">Max izbir: {{question.max_choices}}</p>
-      {% endif %} {% for grade in grades %}
-      <span></span>{% if question.id == grade.question_id %}
+      {% endif %}
+      <br />{% for grade in grades %} <span></span><span></span><span></span
+      ><span></span>{% if question.id == grade.question_id %}
       <p class="p_align">Pravilen rezultat: {{grade.question_answer}}</p>
       {% endif %} {% endfor %} {% for answer in answers %}
       <span></span>{% if question.id == answer.question_id %}
