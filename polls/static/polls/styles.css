@@ -11,11 +11,11 @@
 @media (min-width: 1200px) {}
 
 html, body {
-    overflow-x: hidden;
-  }
-  body {
-    position: relative
-  }
+  overflow-x: hidden;
+}
+body {
+  position: relative
+}
 
 .get-in-touch {
     max-width: 800px;
@@ -77,6 +77,23 @@ html, body {
     -webkit-text-fill-color: transparent !important;
 }
 
+.get-in-touch .subtitle_question {
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 1.8em;
+    line-height: 24px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #5543ca;
+    background: #5543ca;
+    background: -moz-linear-gradient(left, #f4524d 0%, #5543ca 100%) !important;
+    background: -webkit-linear-gradient(left, #f4524d 0%, #5543ca 100%) !important;
+    background: linear-gradient(to right, #f4524d 0%, #5543ca 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text;
+    -webkit-text-fill-color: transparent !important;
+}
+
 
 
 .p_align {
@@ -103,6 +120,13 @@ html, body {
 .contact-form .input-other {
     display: block;
     width: 10%;
+    text-align: left;
+    height: 20px;
+
+}
+
+.contact-form .input-multi {
+    width: 50%;
     text-align: left;
     height: 20px;
 

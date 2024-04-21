@@ -30,7 +30,7 @@
         </div>
 
         {% for question in questions %}
-        <p class="subtitle">Vprašanje {{forloop.counter}}</p>
+        <p class="subtitle_question">Vprašanje {{forloop.counter}}</p>
         <p class="subtitle">{{ question.question }}</p>
 
         {%if question.type == "textbox" %}
