@@ -129,6 +129,7 @@ Question types:
 - I can see that in the last views, my coding level went down (nasty for-loops) as I just "wanted it done"
 - Quite sufficient self-QA process
 - I am still unsure, whether I could describe the end solution to the AI or a no-code platform in a way, that it would "just work" as envisioned without me investing equal amount of time understanding the code it would produce. To be tested.
+- I need to figure out how the vscode environment works as html linter kept breaking my template if clauses that were breaking the page
 
 ## Time spent
 
@@ -142,4 +143,4 @@ Question types:
 - 1h output of all emails + FE fixes + bring group to results - 28
 - 4h devops for deploy to heroku - 32
 - 2h fix ordering bugs and extra explanations on vote-grade + readme - 34
-- 1h fix mobile responsiveness - 35
+- 2h fix mobile responsiveness + template bugfixes - 36

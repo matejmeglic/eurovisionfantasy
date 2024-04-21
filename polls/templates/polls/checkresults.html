@@ -21,11 +21,11 @@
       <p class="p_align">
         Opis točkovanja: {{question.question_grade_description}}
       </p>
-      <p class="p_align">Točke: {{question.grade}}</p>
-      {% if question.grade_partials != None %}
-      <p class="p_align">Delne točke: {{question.grade_partials}}</p>
-      {% endif %} {% if question.grade_description != None %}
-      <p class="p_align">Rang: {{question.grade_description}}</p>
+      <p class="p_align">Točke: {{question.question_grade}}</p>
+      {% if question.question_grade_partials != None %}
+      <p class="p_align">Delne točke: {{question.question_grade_partials}}</p>
+      {% endif %} {% if question.question_grade_description != None %}
+      <p class="p_align">Rang: {{question.question_grade_description}}</p>
       {% endif %} {% if question.max_choices != None %}
       <p class="p_align">Max izbir: {{question.max_choices}}</p>
       {% endif %} {% for grade in grades %}
