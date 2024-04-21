@@ -72,34 +72,43 @@ if questions %}
   </div>
   <br /> <br /> <br /> <br />
 
+  {% else %}
+  <li>Here be dragons.</li>
+  {% endif %}
 
-    {% else %}
-    <li>Here be dragons.</li>
-    {% endif %} {%if question.grade_description != None %}
-    <p class="p_align">{{question.grade_description}}</p>
-    {% endif %}
+  {%if question.grade_description != None %}
+  <p class="p_align">{{question.grade_description}}</p>
+  {% endif %}
 
-    <p class="p_align">Število točk: {{question.grade}}</p>
+  <p class="p_align">Število točk: {{question.grade}}</p>
 
-    {%if question.grade_partials != None %} {%if question.type ==
-    "multipleselect" %}
-    <p class="p_align">Delno točkovanje {{question.grade_partials}} točk.</p>
-    {% elif question.type == "boolean" %}
-    <p class="p_align">
-      Odgovor NE je vreden {{question.grade_partials}} točk.
-    </p>
-    {% endif %} {% endif %} {% if question.type == "numvalue" %} {%if
-    question.grade_range != None %}
-    <p class="p_align">
-      Upoštevani bodo odgovori v rangu +- {{question.grade_range}} enot.
-    </p>
-    {% endif %} {% endif %} {%if question.max_choices != None %}
-    <p class="p_align">
-      Dovoljena izbira do {{question.max_choices}} vrednosti.
-    </p>
-    {% endif %} {% endfor %} {% else %}
-    <h2>Trenutno ni izbranih kvizov za ocenjevanje.</h2>
-    {% endif %}
+  {%if question.grade_partials != None %}
+  {%if question.type == "multipleselect" %}
+  <p class="p_align">Delno točkovanje {{question.grade_partials}} točk.</p>
+  {% elif question.type == "boolean" %}
+  <p class="p_align">Odgovor NE je vreden {{question.grade_partials}} točk.</p>
+  {% endif %}
+  {% endif %}
+
+  {% if question.type == "numvalue" %}
+  {%if question.grade_range != None %}
+  <p class="p_align">Upoštevani bodo odgovori v rangu +- {{question.grade_range}} enot.</p>
+  {% endif %}
+  {% endif %}
+
+  {%if question.max_choices != None %}
+  <p class="p_align">Izberite do {{question.max_choices}} vrednosti.</p>
+  {% endif %}
+  
+
+
+  {% endfor %}
+
+  {% else %}
+  <h2>Trenutno ni aktivnih kvizov.</h2>
+  {% endif %}
+
+
 
     <div class="form-field col-lg-12">
       <input class="submit-btn" type="submit" value="Zaženi Dry Run" />
