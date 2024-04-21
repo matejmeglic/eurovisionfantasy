@@ -14,21 +14,6 @@
 
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-        <div class="form-field col-xs-12">
-            <p><b>Email</b> <i>(ne bo objavljen, potrebujemo za identifikacijo in komunikacijo za feedback)</i></p>
-            <input type="email" class="input-text js-input" id="email" name="email"></input>
-        </div>
-
-        <div class="form-field col-xs-12">
-            <p><b>Ime in priimek ali Vzdevek</b> <i>(da ne bo v rezultatih 5x Eva)</i></p>
-            <input type="text" class="input-text js-input" id="name" name="name"></input>
-        </div>
-
-        <div class="form-field col-xs-12">
-            <p><b>Skupina</b> <i>(ni obvezno, omogoča pa da se lokalni sotekmovalci hitreje najdejo)</i></p>
-            <input type="text" class="input-text js-input" id="group" name="group"></input>
-        </div>
-
         {% for question in questions %}
         <p class="subtitle_question">Vprašanje {{forloop.counter}}</p>
         <p class="subtitle">{{ question.question }}</p>
@@ -122,7 +107,7 @@
         {% else %}
         <h2>Trenutno ni aktivnih kvizov.</h2>
         {% endif %}
-        
+
     <div class="form-field col-lg-12">
       <input class="submit-btn" type="submit" value="Zaženi Dry Run" />
     </div>
