@@ -18,9 +18,11 @@
       <h3 class="subtitle_question p_align">
         Vprašanje {{forloop.counter}}: {{question.question}}
       </h3>
+      {% if question.question_grade_description != None %}
       <p class="p_align">
         Opis točkovanja: {{question.question_grade_description}}
       </p>
+      {% endif %}
       <p class="p_align">Točke: {{question.question_grade}}</p>
       {% if question.question_grade_partials != None %}
       <p class="p_align">Delne točke: {{question.question_grade_partials}}</p>
