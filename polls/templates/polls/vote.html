@@ -20,7 +20,7 @@
         </div>
 
         <div class="form-field col-xs-12">
-            <p><b>Ime in priimek ali Vzdevek</b></p>
+            <p><b>Ime in priimek ali Vzdevek</b> <i>(da ne bo v rezultatih 5x Eva)</i></p>
             <input type="text" class="input-text js-input" id="name" name="name"></input>
         </div>
 
@@ -45,10 +45,10 @@
         {% with question.id|addstr:"-"|addstr:forloop.counter as generated_key %}
 
         <div class="col-xs-6 col-lg-3">
-        <input type="checkbox" class="input-other js-input" id={{value}} name={{generated_key}}
+        <input type="checkbox" class="input-multi js-input inline_class" id={{value}} name={{generated_key}}
             value={{value}}>
 
-        <label class="input-other js-input" for={{value}}>{{value}}</label>
+        <label class="input-multi js-input inline_class" for={{value}}>{{value}}</label>
         </div>
         {% endwith %}
         {% endfor %}
