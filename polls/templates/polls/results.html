@@ -10,11 +10,15 @@
   {% for result in results %}
 
   <div class="form-field col-sm-12">
-    <p class="subtitle_results">
+    <p class="subtitle_results_small">
       <b
-        >{{result.position}} - {{result.season}} - {{result.name}}
-        {{result.group}} - {{result.final_score}}</b
+        >{{result.position}} - {{result.name}}<span></span><span></span
+        ><span></span>{% if results.group != None %} - {{result.group}}<span
+        ></span>{% endif %}</b
       >
+    </p>
+    <p class="subtitle_results">
+      <b>{{result.season}} - {{result.final_score}} točk</b>
     </p>
 
     {% for partial_result in result.partials %}
