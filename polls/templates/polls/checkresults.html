@@ -29,8 +29,8 @@ if questions %}
       {% endif %} {% for grade in grades %}
       <br />{% if question.id == grade.question_id %}
       <p class="p_align">Pravilen rezultat: {{grade.question_answer}}</p>
-      {% endif %} {% endfor %} {% for answer in answers %} {% if question.id ==
-      answer.question_id %}
+      {% endif %} {% endfor %} {% for answer in answers %}
+      <br />{% if question.id == answer.question_id %}
 
       <p class="p_align">{{answer.userName}} - {{answer.value}}</p>
       <div class="p_align">
