@@ -10,6 +10,13 @@
 /* Large Devices, .visible-lg-* */
 @media (min-width: 1200px) {}
 
+html, body {
+    overflow-x: hidden;
+  }
+  body {
+    position: relative
+  }
+
 .get-in-touch {
     max-width: 800px;
     margin: 50px auto;
