@@ -110,24 +110,6 @@ body {
     -webkit-text-fill-color: transparent !important;
 }
 
-.get-in-touch .subtitle_results_small {
-    text-align: center;
-    font-size: 1em;
-    line-height: 12px;
-    padding-bottom: 10px;
-    margin-bottom: 0px;
-    color: #5543ca;
-    background: #5543ca;
-    background: -moz-linear-gradient(left, #f4524d 0%, #5543ca 100%) !important;
-    background: -webkit-linear-gradient(left, #f4524d 0%, #5543ca 100%) !important;
-    background: linear-gradient(to right, #f4524d 0%, #5543ca 100%) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text;
-    -webkit-text-fill-color: transparent !important;
-}
-
-
-
 .p_align {
     text-align: center;
     font-weight: 600;

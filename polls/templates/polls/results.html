@@ -10,10 +10,10 @@
   {% for result in results %}
 
   <div class="form-field col-sm-12">
-    <p class="subtitle_results_small">
+    <p class="subtitle_results">
       <b
         >{{result.position}} - {{result.name}}<span></span><span></span
-        ><span></span>{% if results.group != None %} - {{result.group}}<span
+        ><span></span>{% if result.group != None %} - {{result.group}}<span
         ></span>{% endif %}</b
       >
     </p>
