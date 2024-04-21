@@ -1,115 +1,128 @@
-{% extends "polls/base.html" %} {% block content %} {% load polls_extras %} {%
-if questions %}
+{% extends "polls/base.html" %}
+
+{% block content %}
+
+{% load polls_extras %}
+{% if questions %}
 
 <section class="get-in-touch">
-  <h1 class="title">Ocenjevanje</h1>
+    <h1 class="title">Glasovanje</h1>
+    <h2 class="subtitle">Zdaj gre zares - najprej podatki</h2>
 
-  <form
-    class="contact-form row"
-    method="post"
-    action="{% url 'dryRunGrades' %}"
-  >
-  {% csrf_token %}
+    <form class="contact-form row" method="post" action="{% url 'storeVotes' %}">
+        {% csrf_token %}
 
-  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-  
-  {% for question in questions %}
-  <p class="subtitle_question">Vprašanje {{forloop.counter}}</p>
-  <p class="subtitle">{{ question.question }}</p>
+        <div class="form-field col-xs-12">
+            <p><b>Email</b> <i>(ne bo objavljen, potrebujemo za identifikacijo in komunikacijo za feedback)</i></p>
+            <input type="email" class="input-text js-input" id="email" name="email"></input>
+        </div>
 
-  {%if question.type == "textbox" %}
-  <div class="form-field col-xs-12">
-      <input type="text" class="input-text js-input" name={{question.id}}></input>
-  </div>
-  <br /> <br />
+        <div class="form-field col-xs-12">
+            <p><b>Ime in priimek ali Vzdevek</b> <i>(da ne bo v rezultatih 5x Eva)</i></p>
+            <input type="text" class="input-text js-input" id="name" name="name"></input>
+        </div>
 
-  {% elif question.type == "multipleselect" %}
-  <div class="row padding_bottom">
-  {% for value in question.values %}
-  {% with question.id|addstr:"-"|addstr:forloop.counter as generated_key %}
+        <div class="form-field col-xs-12">
+            <p><b>Skupina</b> <i>(ni obvezno, omogoča pa da se lokalni sotekmovalci hitreje najdejo)</i></p>
+            <input type="text" class="input-text js-input" id="group" name="group"></input>
+        </div>
 
-  <div class="col-6 col-lg-3 padding_bottom">
-  <input type="checkbox" class="js-input inline_class" id={{value}} name={{generated_key}}
-      value={{value}}>
+        {% for question in questions %}
+        <p class="subtitle_question">Vprašanje {{forloop.counter}}</p>
+        <p class="subtitle">{{ question.question }}</p>
 
-  <label class="js-input inline_class" for={{value}}>{{value}}</label>
-  </div>
-  {% endwith %}
-  {% endfor %}
-  </div>
+        {%if question.type == "textbox" %}
+        <div class="form-field col-xs-12">
+            <input type="text" class="input-text js-input" name={{question.id}}></input>
+        </div>
+        <br /> <br />
 
-  <br /> <br />
+        {% elif question.type == "multipleselect" %}
+        <div class="row padding_bottom">
+        {% for value in question.values %}
+        {% with question.id|addstr:"-"|addstr:forloop.counter as generated_key %}
 
-  {% elif question.type == "boolean" %}
-  <div class="row">
-      <div class="col-6 col-lg-3">
-    <input type="radio" class="js-input  inline_class" id="True" name={{question.id}} value="True">
-    <label class="js-input inline_class" for="True">DA</label>
-  </div>
-  <div class="col-6 col-lg-3">
-    <input type="radio" class="js-input  inline_class" id="False" name={{question.id}} value="False">
-    <label class="js-input  inline_class" for="False">NE</label>
-  </div>
-  </div>
+        <div class="col-6 col-lg-3 padding_bottom">
+        <input type="checkbox" class="js-input inline_class" id={{value}} name={{generated_key}}
+            value={{value}}>
 
-  <br /> <br /> 
+        <label class="js-input inline_class" for={{value}}>{{value}}</label>
+        </div>
+        {% endwith %}
+        {% endfor %}
+        </div>
 
-  {% elif question.type == "numvalue" %}
-  <div class="form-field col-xs-12">
-      <input type="number" class="input-text js-input" min="0" name={{question.id}} value={{value}} />
-  </div>
-  <br /> <br />
+        <br /> <br />
 
-  {% elif question.type == "radiobutton" %}
-  <div class="row">
-  {% for value in question.values %}
-  <div class="col-6 col-lg-3 padding_bottom">
-    <input type="radio" class="js-input inline_class" id={{value}} name={{question.id}} value={{value}}>
-    <label class="js-input inline_class" for={{value}}>{{value}}</label><br>
-  </div>
-  {% endfor %}
-  </div>
-  <br /> <br /> <br /> <br />
+        {% elif question.type == "boolean" %}
+        <div class="row">
+            <div class="col-6 col-lg-3">
+          <input type="radio" class="js-input  inline_class" id="True" name={{question.id}} value="True">
+          <label class="js-input inline_class" for="True">DA</label>
+        </div>
+        <div class="col-6 col-lg-3">
+          <input type="radio" class="js-input  inline_class" id="False" name={{question.id}} value="False">
+          <label class="js-input  inline_class" for="False">NE</label>
+        </div>
+        </div>
 
-  {% else %}
-  <li>Here be dragons.</li>
-  {% endif %}
+        <br /> <br /> 
 
-  {%if question.grade_description != None %}
-  <p class="p_align">{{question.grade_description}}</p>
-  {% endif %}
+        {% elif question.type == "numvalue" %}
+        <div class="form-field col-xs-12">
+            <input type="number" class="input-text js-input" min="0" name={{question.id}} value={{value}} />
+        </div>
+        <br /> <br />
 
-  <p class="p_align">Število točk: {{question.grade}}</p>
+        {% elif question.type == "radiobutton" %}
+        <div class="row">
+        {% for value in question.values %}
+        <div class="col-6 col-lg-3 padding_bottom">
+          <input type="radio" class="js-input inline_class" id={{value}} name={{question.id}} value={{value}}>
+          <label class="js-input inline_class" for={{value}}>{{value}}</label><br>
+        </div>
+        {% endfor %}
+        </div>
+        <br /> <br /> <br /> <br />
 
-  {%if question.grade_partials != None %}
-  {%if question.type == "multipleselect" %}
-  <p class="p_align">Delno točkovanje {{question.grade_partials}} točk.</p>
-  {% elif question.type == "boolean" %}
-  <p class="p_align">Odgovor NE je vreden {{question.grade_partials}} točk.</p>
-  {% endif %}
-  {% endif %}
+        {% else %}
+        <li>Here be dragons.</li>
+        {% endif %}
 
-  {% if question.type == "numvalue" %}
-  {%if question.grade_range != None %}
-  <p class="p_align">Upoštevani bodo odgovori v rangu +- {{question.grade_range}} enot.</p>
-  {% endif %}
-  {% endif %}
+        {%if question.grade_description != None %}
+        <p class="p_align">{{question.grade_description}}</p>
+        {% endif %}
 
-  {%if question.max_choices != None %}
-  <p class="p_align">Izberite do {{question.max_choices}} vrednosti.</p>
-  {% endif %}
-  
+        <p class="p_align">Število točk: {{question.grade}}</p>
+
+        {%if question.grade_partials != None %}
+        {%if question.type == "multipleselect" %}
+        <p class="p_align">Delno točkovanje {{question.grade_partials}} točk.</p>
+        {% elif question.type == "boolean" %}
+        <p class="p_align">Odgovor NE je vreden {{question.grade_partials}} točk.</p>
+        {% endif %}
+        {% endif %}
+
+        {% if question.type == "numvalue" %}
+        {%if question.grade_range != None %}
+        <p class="p_align">Upoštevani bodo odgovori v rangu +- {{question.grade_range}} enot.</p>
+        {% endif %}
+        {% endif %}
+
+        {%if question.max_choices != None %}
+        <p class="p_align">Izberite do {{question.max_choices}} vrednosti.</p>
+        {% endif %}
+        
 
 
-  {% endfor %}
+        {% endfor %}
 
-  {% else %}
-  <h2>Trenutno ni aktivnih kvizov.</h2>
-  {% endif %}
-
-
-
+        {% else %}
+        <h2>Trenutno ni aktivnih kvizov.</h2>
+        {% endif %}
+        
     <div class="form-field col-lg-12">
       <input class="submit-btn" type="submit" value="Zaženi Dry Run" />
     </div>
