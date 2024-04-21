@@ -17,12 +17,17 @@ if questions %}
         Vprašanje {{forloop.counter}}: {{ question.question }}
       </h3>
       <p class="p_align">
-        Opis točkovanja: {{question.question_grade_description}}, Točke:
-        {{question.grade}}, Delne točke: {{question.grade_partials}}, Rang:
-        {{question.grade_description}}, Max izbir: {{question:max_choices}}
+        Opis točkovanja: {{question.question_grade_description}}
       </p>
-
-      {% for grade in grades %} {% if question.id == grade.question_id %}
+      <p class="p_align">Točke: {{question.grade}}</p>
+      {% if question.grade_partials != None %}
+      <p class="p_align">Delne točke: {{question.grade_partials}}</p>
+      {% endif %} {% if question.grade_description != None %}
+      <p class="p_align">Rang: {{question.grade_description}}</p>
+      {% endif %} {% if question.max_choices != None %}
+      <p class="p_align">Max izbir: {{question:max_choices}}</p>
+      {% endif %} {% for grade in grades %} {% if question.id ==
+      grade.question_id %}
       <p class="p_align">Pravilen rezultat: {{grade.question_answer}}</p>
       {% endif %} {% endfor %} {% for answer in answers %} {% if question.id ==
       answer.question_id %}
