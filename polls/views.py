@@ -375,13 +375,19 @@ def results(request):
         
         counter = 1
         season_changed = ""
-        for result in content_sorted:
+        previous_grade = None
+        for result in content_sorted:                
             if season_changed == "" or season_changed == result.get("season"):
-                result["position"] = counter
+                if result.get("final_grade") == previous_grade:
+                    result["position"] = counter - 1
+                else:
+                    result["position"] = counter
             else:
                 counter = 1
                 result["position"] = counter
-            counter +=1
+            
+            previous_grade = result.get("final_grade")
+            counter += 1
             season_changed= result.get("season")
 
             
