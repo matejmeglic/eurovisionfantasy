@@ -33,7 +33,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG_VALUE') 
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ["eurofantasy-mm.herokuapp.com"]
+ALLOWED_HOSTS = ["eurofantasy-mm.herokuapp.com", "glasovanje.eurovizija.si", "eurovizija.si"]
 
 
 # Application definition
