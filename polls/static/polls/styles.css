@@ -199,6 +199,6 @@ ul.no_bullets {
     margin: 0; /* Remove margins */
   }
 
-.li.small_font {
-    font-size: 9px;
+.small_font {
+    font-size: 70%;
 }
