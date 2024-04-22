@@ -13,10 +13,11 @@
       {% for result in results %}
 
       <li>
-        <b>{{result.position}} - {{result.name}}</b><span></span><span></span
-        ><span></span>{% if result.group != None %} - {{result.group}}<span
-        ></span>{% endif %} -
-        <b>{{result.final_score}} točk</b>
+        <b
+          >{{result.position}} - {{result.name}}<span></span><span></span
+          ><span></span>{% if result.group != None %} - {{result.group}}<span
+          ></span>{% endif %} - {{result.final_score}} točk</b
+        >
       </li>
       <li>
         {% for partial_result in result.partials %}
@@ -24,6 +25,7 @@
 
         {% endfor %}
       </li>
+      <br />
 
       {% endfor %}
     </ul>
