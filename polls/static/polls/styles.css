@@ -198,3 +198,7 @@ ul.no_bullets {
     padding: 0; /* Remove padding */
     margin: 0; /* Remove margins */
   }
+
+.li.small_font {
+    font-size: 0.5em;
+}
