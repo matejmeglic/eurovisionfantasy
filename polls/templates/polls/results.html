@@ -7,27 +7,28 @@
     Iskrene čestitke. Uspelo nam je, tu so rezultati. Se vidimo naslednje leto,
     itak?
   </p>
-  {% for result in results %}
-
+  <br />
   <div class="form-field col-sm-12">
-    <p class="subtitle_results">
-      <b
-        >{{result.position}} - {{result.name}}<span></span><span></span
+    <ul class="no_bullets">
+      {% for result in results %}
+
+      <li>
+        <b>{{result.position}} - {{result.name}}</b><span></span><span></span
         ><span></span>{% if result.group != None %} - {{result.group}}<span
-        ></span>{% endif %}</b
-      >
-    </p>
-    <p class="subtitle_results">
-      <b>{{result.season}} - {{result.final_score}} točk</b>
-    </p>
+        ></span>{% endif %} -
+        <b>{{result.final_score}} točk</b>
+      </li>
+      <li>
+        {% for partial_result in result.partials %}
+        <i>{{partial_result.0}} - {{partial_result.1}}, </i>
 
-    {% for partial_result in result.partials %}
-    <p class="p_align"><i>{{partial_result.0}} - {{partial_result.1}}</i></p>
+        {% endfor %}
+      </li>
 
-    {% endfor %}
+      {% endfor %}
+    </ul>
   </div>
-
-  {% endfor %} {% else %}
+  {% else %}
   <h1 class="title">Trenutno ni rezultatov.</h1>
   <p class="p_align">
     Kaj pa zdaj? Osveži stran čez 5 minut? Pojej sendvič? Pomij posodo (če si si
