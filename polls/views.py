@@ -375,7 +375,7 @@ def results(request):
         
         counter = 1
         season_changed = ""
-        previous_grade = None
+        previous_grade = 0
         for result in content_sorted:                
             if season_changed == "" or season_changed == result.get("season"):
                 if result.get("final_grade") == previous_grade:
