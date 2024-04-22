@@ -144,3 +144,4 @@ Question types:
 - 4h devops for deploy to heroku - 32
 - 2h fix ordering bugs and extra explanations on vote-grade + readme - 34
 - 2h fix mobile responsiveness + template bugfixes - 36
+- 2h fix results page (FE + counter) + dns - 38
