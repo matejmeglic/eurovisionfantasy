@@ -95,7 +95,7 @@ def storeVotes(request):
                             if name != "":
                                 questionFK = Question.objects.get(id=question) 
                                 saveThis = Answer(userEmail=email, userName=name, userGroup=group, value=answer[1], question=questionFK, created_dt=timezone.now())
-                                saveThis.save()
+                                #saveThis.save()
                                 context_answers.append({"question":questionFK.get("question"), "answer":answer[1]})
 
     #build context for thankyou page
