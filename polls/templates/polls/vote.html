@@ -59,12 +59,16 @@
         {% elif question.type == "boolean" %}
         <div class="row">
             <div class="col-6 col-lg-3">
-          <input type="radio" class="js-input  inline_class" id="True" name={{question.id}} value="True">
-          <label class="js-input inline_class" for="True">DA</label>
+        {% with question.id|addstr:"-"|addstr:"True" as generated_true %}
+          <input type="radio" class="js-input  inline_class" id={{generated_true}} name={{question.id}} value="True">
+          <label class="js-input inline_class" for={{generated_true}}>DA</label>
+        {% endwith %}
         </div>
         <div class="col-6 col-lg-3">
-          <input type="radio" class="js-input  inline_class" id="False" name={{question.id}} value="False">
-          <label class="js-input  inline_class" for="False">NE</label>
+        {% with question.id|addstr:"-"|addstr:"False" as generated_false %}
+          <input type="radio" class="js-input  inline_class" id={{generated_false}} name={{question.id}} value="False">
+          <label class="js-input  inline_class" for={{generated_false}}>NE</label>
+        {% endwith %}
         </div>
         </div>
 
