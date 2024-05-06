@@ -216,7 +216,8 @@ def dryRunGrades(request):
                                     grade_calc = question.get("question_grade")
                         elif question.get("question_type") == "boolean": #boolean handling in case of different points
                             if question.get("question_grade_partials") == None: #only correct answer gets point
-                                grade_calc = question.get("question_grade")
+                                 if answer.get("value") == "True":
+                                    grade_calc = question.get("question_grade")
                             else:
                                 if answer.get("value") == "True": #both answers have point and they might be different
                                     grade_calc = int(question.get("question_grade"))

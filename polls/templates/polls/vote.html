@@ -79,10 +79,12 @@
         {% elif question.type == "radiobutton" %}
         <div class="row">
         {% for value in question.values %}
+        {% with question.id|addstr:"-"|addstr:forloop.counter as generated_key %}
         <div class="col-6 col-lg-3 padding_bottom">
-          <input type="radio" class="js-input inline_class" id={{value}} name={{question.id}} value={{value}}>
+          <input type="radio" class="js-input inline_class" id={{value}} name={{generated_key}} value={{value}}>
           <label class="js-input inline_class" for={{value}}>{{value}}</label><br>
         </div>
+        {% endwith %}
         {% endfor %}
         </div>
         <br /> <br /> <br /> <br />
