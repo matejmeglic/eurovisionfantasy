@@ -32,7 +32,7 @@ class Question(models.Model):
         "Max odgovorov", blank=True, null=True
     )
 
-    question_values = models.CharField("Vrednosti", max_length=500, blank=True, null=True)
+    question_values = models.CharField("Vrednosti", max_length=2000, blank=True, null=True)
     question_grade = models.IntegerField(
         "Točke", default=1, blank=False, null=False
     )
@@ -41,7 +41,7 @@ class Question(models.Model):
         "Rang +-", blank=True, null=True
     )
     question_grade_description = models.CharField("Opis ocene", max_length=500, blank=True, null=True)
-    question_result = models.CharField("Rezultat", max_length=500, blank=True, null=True)
+    question_result = models.CharField("Rezultat", max_length=2000, blank=True, null=True)
 
     class Meta:
         verbose_name = "Vprašanje"
