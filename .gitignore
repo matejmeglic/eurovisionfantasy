@@ -92,5 +92,5 @@ celerybeat-schedule
 
 db.sqlite3
 
-migrations/
+#migrations/
 .DS_Store
