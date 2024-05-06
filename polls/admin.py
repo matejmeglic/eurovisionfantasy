@@ -20,6 +20,7 @@ class AnswerAdmin(admin.ModelAdmin):
     readonly_fields = ("created_dt",)
     list_display = ("created_dt", "id", "get_question", "value", "grade", "userName", "userGroup", "userEmail")
     ordering = ("-id",)
+    list_filter = ["userEmail", "userName", "userGroup"]
     
     @admin.display(ordering='question__question', description='Question')
     def get_question(self, obj):
