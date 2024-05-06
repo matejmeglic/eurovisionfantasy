@@ -48,7 +48,7 @@
         <input type="checkbox" class="js-input inline_class" id={{generated_key}} name={{generated_key}}
             value={{value}}>
 
-        <label class="js-input inline_class" for={{value}}>{{value}}</label>
+        <label class="js-input inline_class" for={{generated_key}}>{{value}}</label>
         </div>
         {% endwith %}
         {% endfor %}
@@ -82,7 +82,7 @@
         {% with question.id|addstr:"-"|addstr:forloop.counter as generated_key %}
         <div class="col-6 col-lg-3 padding_bottom">
           <input type="radio" class="js-input inline_class" id={{generated_key}} name={{generated_key}} value={{value}}>
-          <label class="js-input inline_class" for={{value}}>{{value}}</label><br>
+          <label class="js-input inline_class" for={{generated_key}}>{{value}}</label><br>
         </div>
         {% endwith %}
         {% endfor %}
