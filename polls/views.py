@@ -321,7 +321,7 @@ def results(request):
             get_questionsanswers = Question.objects.filter(id__in=poll.get("question_ids"))
             build_questionsanswers = []
             for question in get_questionsanswers:
-                text = str(question.question)+": "+str(question.question_result)
+                text = str(question.question)+": <b>"+str(question.question_result)+"</b>"
                 build_questionsanswers.append(text)
             questionsanswers_object = {
                 "season": poll.get("season"),

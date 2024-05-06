@@ -8,7 +8,6 @@
     itak?
   </p>
   <br />
-  <p>{{questionsanswers}}</p>
   <div class="form-field col-sm-12">
     <ul class="no_bullets">
       {% for result in results %}
@@ -37,6 +36,21 @@
     Kaj pa zdaj? Osveži stran čez 5 minut? Pojej sendvič? Pomij posodo (če si si
     že prej pripravil sendvič)?
   </p>
+  {% endif %}
+  <br /><br />
+
+  {% if questionsanswers %}
+  <h1 class="title">Pravilni rezultati</h1>
+  <br /><br />
+  {% for poll in questionsanswers %}
+  <p>{{poll.season}} - {{poll.poll_name}}</p>
+  <ul class="no_bullets">
+    {% for qa in poll.questionsanswers %}
+    <li>{{qa}}</li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+  </ul>
   {% endif %}
 
   <br /><br />
