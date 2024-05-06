@@ -95,7 +95,7 @@ def storeVotes(request):
                             if name != "":
                                 questionFK = Question.objects.get(id=question) 
                                 saveThis = Answer(userEmail=email, userName=name, userGroup=group, value=answer[1], question=questionFK, created_dt=timezone.now())
-                                #saveThis.save()
+                                saveThis.save()
                                 context_answers.append({"question":questionFK.question, "answer":answer[1]})
 
     #build context for thankyou page
@@ -194,6 +194,11 @@ def dryRunGrades(request):
             "question_answer": question[1]
         }
         graded_questions_parsed_object.append(content)
+
+    #20240506 add result to questions object for final results rendering
+    for graded_question in graded_questions_parsed_object:
+        get_question = Question.objects.get(id=graded_question.get("question_id"))
+        get_question.question_final_result = graded_question.get("question_answer")
 
     # get all eligible answers and create context
     eligible_answers = Answer.objects.filter(question__in=active_question_list).values()
