@@ -3,9 +3,21 @@
 <section class="get-in-touch">
   <h1 class="title">Cool... Si oddal/a!</h1>
 
-  <p class="p_align">Kaj pa zdaj?</p>
+  <p class="p_align">
+    To je zadnje mesto, kjer vidiš svoje rezultate. Naredi fotko, da lahko potem
+    primerjaš z drugimi
+  </p>
   <ul>
-    <li>Uživaš v Evroviziji.</li>
+    {% for answer in answers %}
+    <li>{{answer.question}}: {{answer.answer}}</li>
+    {% endfor %}
+  </ul>
+  <br /><br />
+
+  <p class="title">Kaj pa zdaj?</p>
+
+  <ul>
+    <li>Ja, uživaj v Evroviziji.</li>
     <li>
       Spremljaš spletno stran, da vidiš rezultate, ki bodo znani (če bo šlo pri
       ocenjevanju vse po planu) v nekaj minutah po končanem glasovanju za
@@ -18,17 +30,7 @@
     <li>Lahko tudi pohvališ app - ne bova nič zamerila X)</li>
   </ul>
   <br /><br />
-  <p class="title">Kako si že glasoval/a?</p>
-  <p class="p_align">
-    To je zadnje mesto, kjer vidiš svoje rezultate. Naredi fotko, da lahko potem
-    primerjaš z drugimi
-  </p>
-  <ul>
-    {% for answer in answers %}
-    <li>{{answer.question}}: {{answer.answer}}</li>
-    {% endfor %}
-  </ul>
-  <br /><br />
+
   <div class="contact-form row">
     <a href="/"><input class="submit-btn" value="Čakat grem rezultate" /></a>
   </div>
