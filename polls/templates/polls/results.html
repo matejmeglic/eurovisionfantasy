@@ -43,14 +43,15 @@
   <h1 class="title">Pravilni rezultati</h1>
   <br /><br />
   {% for poll in questionsanswers %}
-  <p>{{poll.season}} - {{poll.poll_name}}</p>
-  <ul class="no_bullets">
+  <p><b>{{poll.season}} - {{poll.poll_name}}</b></p>
+  <ul>
     {% for qa in poll.questionsanswers %}
     <li>{{qa}}</li>
     {% endfor %}
   </ul>
   {% endfor %}
   </ul>
+  <br /><br />
   {% endif %}
 
   <br /><br />
