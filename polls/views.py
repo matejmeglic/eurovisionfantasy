@@ -86,6 +86,7 @@ def storeVotes(request):
                 answered_questions_parsed.append((answer_key,answer[1])) # the key doesn't exist, add the answer
 
     #saving script
+    context_answers = []
     for answer in answered_questions_parsed:
         for question in active_question_list:
                 if int(answer[0]) == question:
@@ -95,9 +96,15 @@ def storeVotes(request):
                                 questionFK = Question.objects.get(id=question) 
                                 saveThis = Answer(userEmail=email, userName=name, userGroup=group, value=answer[1], question=questionFK, created_dt=timezone.now())
                                 saveThis.save()
+                                context_answers.append({"question":questionFK.get("question"), "answer":answer[1]})
+
+    #build context for thankyou page
+
+    context = {"answers": context_answers}
 
     #return HttpResponseRedirect("") #testEnv
-    return HttpResponseRedirect(reverse("thankyou")) #production
+    #return HttpResponseRedirect(reverse("thankyou")) #production
+    return render(request, "polls/thankyou.html", context)
 
 def thankyou(request):
 
