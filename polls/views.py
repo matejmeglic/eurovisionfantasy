@@ -219,10 +219,11 @@ def dryRunGrades(request):
                                  if answer.get("value") == grade.get("question_answer"):
                                     grade_calc = question.get("question_grade")
                             else:
-                                if answer.get("value") == "True": #both answers have point and they might be different
-                                    grade_calc = int(question.get("question_grade"))
-                                elif answer.get("value") == "False":
-                                    grade_calc = int(question.get("question_grade_partials"))
+                                if answer.get("value") == grade.get("question_answer"): #both answers have point and they might be different, check if the answer is correct
+                                    if answer.get("value") == "True": 
+                                        grade_calc = int(question.get("question_grade"))
+                                    elif answer.get("value") == "False":
+                                        grade_calc = int(question.get("question_grade_partials"))
                         elif question.get("question_type") == "multipleselect": #multipleselect special partial grades handling
                             
                             # get arrays
