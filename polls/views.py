@@ -199,6 +199,7 @@ def dryRunGrades(request):
     for graded_question in graded_questions_parsed_object:
         get_question = Question.objects.get(id=graded_question.get("question_id"))
         get_question.question_result = graded_question.get("question_answer")
+        get_question.save()
 
     # get all eligible answers and create context
     eligible_answers = Answer.objects.filter(question__in=active_question_list).values()
