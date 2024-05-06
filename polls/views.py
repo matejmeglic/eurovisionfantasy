@@ -199,7 +199,7 @@ def dryRunGrades(request):
     for graded_question in graded_questions_parsed_object:
         get_question = Question.objects.get(id=graded_question.get("question_id"))
         get_question.question_result = graded_question.get("question_answer")
-        get_question.save()
+        get_question.save() # save result to the question
 
     # get all eligible answers and create context
     eligible_answers = Answer.objects.filter(question__in=active_question_list).values()
@@ -314,6 +314,21 @@ def results(request):
                 "question_ids": [int(x.strip()) for x in result.get("question_ids").split(',') if x]   
             }
             polls_results_transformed.append(context)
+        
+        #20240506 Get all questions+answers for rendering in context
+        context_questionsanswers = []
+        for poll in polls_results_transformed:
+            get_questionsanswers = Question.objects.filter(id__in=poll.get("question_ids"))
+            build_questionsanswers = []
+            for question in get_questionsanswers:
+                text = str(question.question)+": "+str(question.question_result)
+                build_questionsanswers.append(text)
+            questionsanswers_object = {
+                "season": poll.get("season"),
+                "poll_name": poll.get("poll_name"),
+                "questionsanswers": build_questionsanswers
+            }
+            context_questionsanswers.append(questionsanswers_object)
 
         # get all graded Answers
         counter = 0
@@ -407,7 +422,7 @@ def results(request):
 
             
         #build context
-        context = {"results": content_sorted}
+        context = {"results": content_sorted, "questionsanswers": context_questionsanswers}
     else:
         context = {}
 
