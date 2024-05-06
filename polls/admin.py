@@ -4,7 +4,7 @@ from . import models
 @admin.register(models.Question)
 class QuestionAdmin(admin.ModelAdmin):
  
-    list_display = ("id", "question", "question_type", "question_values", "question_grade_description", "max_choices", "question_grade", "question_grade_partials", "question_grade_range", "question_final_result")
+    list_display = ("id", "question", "question_type", "question_values", "question_grade_description", "max_choices", "question_grade", "question_grade_partials", "question_grade_range", "question_result")
 
 @admin.register(models.Poll)
 class PollAdmin(admin.ModelAdmin):
