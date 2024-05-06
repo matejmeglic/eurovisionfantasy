@@ -3,7 +3,6 @@
 <section class="get-in-touch">
   <h1 class="title">Cool... Si oddal/a!</h1>
 
-  <p>{{answers}}</p>
   <p class="p_align">Kaj pa zdaj?</p>
   <ul>
     <li>Uživaš v Evroviziji.</li>
@@ -17,6 +16,16 @@
       za naslednje leto, če rezultati niso neki?
     </li>
     <li>Lahko tudi pohvališ app - ne bova nič zamerila X)</li>
+  </ul>
+  <br /><br />
+  <p class="p_align">
+    Kako si že glasoval/a (to je zadnje mesto, kjer vidiš svoje rezultate,
+    naredi fotko, da lahko potem primerjaš z drugimi)?
+  </p>
+  <ul>
+    {% for answer in answers %}
+    <li>{{answer.question}}: {{answer.answer}}</li>
+    {% endfor %}
   </ul>
   <br /><br />
   <div class="contact-form row">
