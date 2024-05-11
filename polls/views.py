@@ -407,22 +407,21 @@ def results(request):
         counter = 1
         season_changed = ""
         previous_grade = None
-        positions = {}  # Dictionary to store positions for each unique score
+        previous_position = None
         for result in content_sorted:
             if season_changed == "" or season_changed == result.get("season"):
                 if previous_grade is None or result.get("final_score") < previous_grade:  # New unique score
                     result["position"] = counter
-                    positions[result.get("final_score")] = counter  # Store position for this score
                 elif result.get("final_score") == previous_grade:  # Same score as previous
-                    result["position"] = positions[result.get("final_score")]  # Use stored position
+                    result["position"] = previous_position
                 else:  # Greater score than previous, increment counter
                     counter += 1
                     result["position"] = counter
-                    positions[result.get("final_score")] = counter  # Store position for this score
+                previous_position = result["position"]  # Update previous position
             else:
                 counter = 1
                 result["position"] = counter
-                positions[result.get("final_score")] = counter  # Store position for this score
+                previous_position = counter
 
             previous_grade = result.get("final_score")
             season_changed = result.get("season")
