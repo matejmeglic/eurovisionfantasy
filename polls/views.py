@@ -414,7 +414,7 @@ def results(request):
                     result["position"] = counter
                     previous_position = counter
                 elif result.get("final_score") == previous_grade:  # Same score as previous
-                    result["position"] = previous_position
+                    result["position"] = previous_position  # Keep the same position as the previous
                 else:  # Greater score than previous, increment counter
                     counter += 1
                     result["position"] = counter
