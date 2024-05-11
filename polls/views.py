@@ -405,17 +405,17 @@ def results(request):
         
         counter = 1
         season_changed = ""
-        previous_grade = 0
+        previous_grade = None  # Change to None for initial comparison
         for result in content_sorted:                
             if season_changed == "" or season_changed == result.get("season"):
-                if result.get("final_score") == previous_grade:
+                if previous_grade is not None and result.get("final_score") == previous_grade:
                     result["position"] = counter - 1
                 else:
                     result["position"] = counter
             else:
                 counter = 1
                 result["position"] = counter
-            
+
             previous_grade = result.get("final_score")
             counter += 1
             season_changed= result.get("season")
