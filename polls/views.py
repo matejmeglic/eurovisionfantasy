@@ -404,45 +404,25 @@ def results(request):
         #content_grade = sorted(content_unsorted, key=lambda k: (k['final_score']) , reverse=True) # first pass, sort scoring
         content_sorted = sorted(content_unsorted, key=lambda k: ( k['season'],k['final_score']) , reverse=True) # second pass, sort seasons 
 
+
+
         counter = 1
         season_changed = ""
-        previous_grade = None
-        previous_position = None
-        for result in content_sorted:
+        previous_grade = 0
+        for result in content_sorted:                
             if season_changed == "" or season_changed == result.get("season"):
-                if previous_grade is None or result.get("final_score") < previous_grade:  # New unique score
+                if result.get("final_score") == previous_grade:
                     result["position"] = counter
-                elif result.get("final_score") == previous_grade:  # Same score as previous
-                    result["position"] = previous_position
-                else:  # Greater score than previous, increment counter
+                else:
                     counter += 1
                     result["position"] = counter
-                previous_position = result["position"]  # Update previous position
-                previous_grade = result.get("final_score")  # Update previous grade
             else:
                 counter = 1
                 result["position"] = counter
-                previous_position = counter
-                previous_grade = result.get("final_score")  # Update previous grade
+            
+            previous_grade = result.get("final_score")
 
-            season_changed = result.get("season")
-
-        """         counter = 1
-                season_changed = ""
-                previous_grade = 0
-                for result in content_sorted:                
-                    if season_changed == "" or season_changed == result.get("season"):
-                        if result.get("final_score") == previous_grade:
-                            result["position"] = counter - 1
-                        else:
-                            result["position"] = counter
-                    else:
-                        counter = 1
-                        result["position"] = counter
-                    
-                    previous_grade = result.get("final_score")
-                    counter += 1
-                    season_changed= result.get("season") """
+            season_changed= result.get("season")
 
             
         #build context
