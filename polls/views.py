@@ -427,22 +427,22 @@ def results(request):
             previous_grade = result.get("final_score")
             season_changed = result.get("season")
 
-"""         counter = 1
-        season_changed = ""
-        previous_grade = 0
-        for result in content_sorted:                
-            if season_changed == "" or season_changed == result.get("season"):
-                if result.get("final_score") == previous_grade:
-                    result["position"] = counter - 1
-                else:
-                    result["position"] = counter
-            else:
-                counter = 1
-                result["position"] = counter
-            
-            previous_grade = result.get("final_score")
-            counter += 1
-            season_changed= result.get("season") """
+        """         counter = 1
+                season_changed = ""
+                previous_grade = 0
+                for result in content_sorted:                
+                    if season_changed == "" or season_changed == result.get("season"):
+                        if result.get("final_score") == previous_grade:
+                            result["position"] = counter - 1
+                        else:
+                            result["position"] = counter
+                    else:
+                        counter = 1
+                        result["position"] = counter
+                    
+                    previous_grade = result.get("final_score")
+                    counter += 1
+                    season_changed= result.get("season") """
 
             
         #build context
