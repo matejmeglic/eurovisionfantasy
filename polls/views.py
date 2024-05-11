@@ -418,12 +418,13 @@ def results(request):
                     counter += 1
                     result["position"] = counter
                 previous_position = result["position"]  # Update previous position
+                previous_grade = result.get("final_score")  # Update previous grade
             else:
                 counter = 1
                 result["position"] = counter
                 previous_position = counter
+                previous_grade = result.get("final_score")  # Update previous grade
 
-            previous_grade = result.get("final_score")
             season_changed = result.get("season")
 
         """         counter = 1
