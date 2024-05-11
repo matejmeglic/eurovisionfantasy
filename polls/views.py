@@ -394,8 +394,8 @@ def results(request):
                 "final_score": sresult[5],
                 "partials": []
             }
+            email_partials = []
             for gresult in grouped_results:
-                email_partials = []
                 if sresult[0] == gresult[0]: #check season
                     if sresult[3] == gresult[3]: #check user
                         email_partials.append([gresult[3],gresult[1], gresult[5]]) 
