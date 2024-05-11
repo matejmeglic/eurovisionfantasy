@@ -419,7 +419,7 @@ def results(request):
                     result["position"] = counter
                     previous_position = counter
             else:
-                counter = 1
+                counter = 1 #comment
                 result["position"] = counter
                 previous_position = counter
 
