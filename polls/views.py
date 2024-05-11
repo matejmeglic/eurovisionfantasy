@@ -406,7 +406,8 @@ def results(request):
 
 
 
-        counter = 1
+        counter = 0
+        temp_counter = 0
         season_changed = ""
         previous_grade = 0
         for result in content_sorted:                
@@ -414,14 +415,14 @@ def results(request):
                 if result.get("final_score") == previous_grade:
                     result["position"] = counter
                 else:
-                    counter += 1
+                    counter = temp_counter + 1
                     result["position"] = counter
             else:
-                counter = 1
+                counter = 0
                 result["position"] = counter
             
             previous_grade = result.get("final_score")
-
+            temp_counter+=1
             season_changed= result.get("season")
 
             
