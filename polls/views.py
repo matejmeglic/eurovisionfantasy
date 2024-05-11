@@ -394,13 +394,10 @@ def results(request):
                 "final_score": sresult[5],
                 "partials": []
             }
-            email_partials = []
             for gresult in grouped_results:
                 if sresult[0] == gresult[0]: #check season
-                    if sresult[3] == gresult[3]: #check user
-                        email_partials.append([gresult[3],gresult[1], gresult[5]]) 
-            for entry in email_partials:
-                user_content["partials"].append([email_partials[0][1], entry[2]]) # remove email from, retain first name used
+                    if sresult[2] == gresult[2]: #check user email (to ensure partial results are rendered correctly)
+                        user_content["partials"].append([gresult[1], gresult[5]]) # remove email from 
             content_unsorted.append(user_content)
 
         #sort content
