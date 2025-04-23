@@ -35,9 +35,12 @@ DEBUG = os.getenv('DEBUG_VALUE')
 #DEBUG = False
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ["https://eurofantasy-mm-e33631504345.herokuapp.com/","eurofantasy-mm.herokuapp.com", "glasovanje.eurovizija.si", "eurovizija.si", ".herokudns.com"]
 #ALLOWED_HOSTS = ["*"]
-
+ALLOWED_HOSTS = [
+    "eurofantasy-mm-e33631504345.herokuapp.com",
+    "eurofantasy-mm.herokuapp.com",
+    ".herokudns.com"
+]
 
 # Application definition
 
