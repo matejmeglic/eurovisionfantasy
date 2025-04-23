@@ -97,6 +97,12 @@ WSGI_APPLICATION = 'eurofantasy.wsgi.application'
 #}
 
 DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
+    )
+}
+
+""" DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.postgresql',
          'NAME': os.getenv('DB_NAME'),
@@ -106,7 +112,7 @@ DATABASES = {
          'PORT': 5432,
      }
  }
-
+ """
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
