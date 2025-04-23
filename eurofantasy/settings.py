@@ -64,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
 ]
 
 ROOT_URLCONF = 'eurofantasy.urls'
@@ -160,7 +161,7 @@ STATIC_URL = '/static/'
 # Directories to look for static files (e.g., app's "static" directories) ##
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # Your project's main static directory
-    BASE_DIR / "polls/static",  # Ensure the 'polls' app's static directory is included
+    BASE_DIR / "polls" / "static",  # Ensure the 'polls' app's static directory is included
 ]
 
 # The directory where collected static files will be stored

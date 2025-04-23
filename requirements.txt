@@ -8,10 +8,12 @@ django-bootstrap5==25.1
 django-multiselectfield==0.1.13
 djlint==1.35.2
 EditorConfig==0.12.4
+gunicorn==23.0.0
 html-tag-names==0.1.2
 html-void-elements==0.1.0
 jsbeautifier==1.15.1
 json5==0.9.25
+packaging==25.0
 pathspec==0.12.1
 psycopg2-binary==2.9.10
 python-decouple==3.8
@@ -21,4 +23,4 @@ six==1.16.0
 sqlparse==0.5.1
 tqdm==4.66.5
 typing_extensions==4.13.2
-gunicorn==23.0.0
+whitenoise==6.9.0
