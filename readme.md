@@ -22,6 +22,7 @@ In current state, sure. Best idea is to fork it and host it on heroku paid plan 
 - grade - grading page
 - dryRunGrades - dryRun is a pre-save mechanism that grades all points, but allows grader to manipulate grades (and checks for errors) on an answer level. This is implemented to give the grader some control over the grades, punish the multiple select bug, implement a tiebreaker rule etc.
 - results - show results
+- 2025 - finale evening added
 
 ## Mechanics
 
@@ -100,6 +101,12 @@ Question types:
 - grading is currently always on the season level, results are shown (a) per season for all players and (b) per poll per player for that season, but there is no breakdown for per poll for all players. Question-level results are never shown to the public.
 - there can be multiple seasons active at the same time, all the results are rendered based on polls with is_results = True
 
+### Finale (2025)
+
+- is_finale was added alongside with /finale view that renders only final evening
+(this was added as during 2024 test, there were 50% of people who only wanted to play on the final night, and then obviously scored way lower than people who played 3 nights and collected way more points)
+- as the Final evening is graded, turn both booleans (is_result and is_finale) on and both "results" pages should work, /results showing actual x-night summary, and /finale showing only the last one
+
 ### Polls
 
 - once all the questions are set, create a poll and assign it to the season (even a single poll has to have a season)
@@ -146,3 +153,4 @@ Question types:
 - 2h fix mobile responsiveness + template bugfixes - 36
 - 2h fix results page (FE + counter) + dns - 38
 - 2h bugfix and results rendering - 40
+- 1h for finale (bad code, just replicated /results) - 41

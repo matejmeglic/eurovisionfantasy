@@ -88,7 +88,7 @@ class Poll(models.Model):
     is_active = models.BooleanField("Aktiven", help_text="Samo en aktiven kviz na enkrat", default=False)
     is_grading = models.BooleanField("Ocenjevanje", help_text="Samo en aktiven kviz na enkrat", default=False)
     is_results = models.BooleanField("Rezultati", help_text="Ali se rezultati pokažejo na www", default=False)
-    
+    is_finale = models.BooleanField("Finale", help_text="Ali se rezultati pokažejo na www (samo finale)", default=False)
 
     class Meta:
         verbose_name = "Kviz"

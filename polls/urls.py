@@ -12,6 +12,7 @@ urlpatterns = [
     path("storeResults/", views.storeResults, name="storeResults"),
     path("gradingcomplete/", views.gradingcomplete, name="gradingcomplete"),
     path("results/", views.results, name="results"),
+    path("finale/", views.finale, name="finale"),
     path("error/", views.error, name="error"),
     path("email/", views.email, name="email"),
 ]
