@@ -156,9 +156,14 @@ USE_TZ = True
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
+
+# Directories to look for static files (e.g., app's "static" directories)
 STATICFILES_DIRS = [
-    BASE_DIR / "static",  # Example: your project's 'static' directory
+    BASE_DIR / "static",  # Your project's main static directory
+    BASE_DIR / "polls/static",  # Ensure the 'polls' app's static directory is included
 ]
+
+# The directory where collected static files will be stored
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = '/media/'
