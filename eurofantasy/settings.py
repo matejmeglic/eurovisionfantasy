@@ -157,7 +157,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Directories to look for static files (e.g., app's "static" directories)
+# Directories to look for static files (e.g., app's "static" directories) ##
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # Your project's main static directory
     BASE_DIR / "polls/static",  # Ensure the 'polls' app's static directory is included
