@@ -1,69 +1,132 @@
+Conversation opened. 8 messages. 3 messages unread.
+
+Skip to content
+Using Matej Meglic porocna fotografija Mail with screen readers
+
+2 of 11,056
+Evrovizija 2025 is back !
+External
+Inbox
+
+
+Matej Meglic
+Apr 23, 2025, 9:32 PM
+Hello. Short and sweet. 1. it's up Letos tekmujemo pod https://eurofantasy-mm-e33631504345.herokuapp.com/ naslovom. 2. admin accessti se kot vedno prijaviš v ba
+3
+
+Črt Jaklič
+May 8, 2025, 11:34 AM (4 days ago)
+Dela! Hvala. :)
+
+Črt Jaklič
+May 11, 2025, 11:27 PM (9 hours ago)
+to me
+
+Eno vprašanje: se da kje vidt lanske zadeve? Al so šle s tokom po reki navzdol?
+
+Sistem mi je jasen, že delam na (pred)pripravi, ampak me najbolj zanima, kako sem reševal zadeve glede presledkov itd.
+
+lpč
+
+
+Črt Jaklič
+Attachments
+May 11, 2025, 11:55 PM (8 hours ago)
+to me
+
+Prvi polfinale bi moral biti live ;)
+Pošiljam posodobljen index.
+
+P.s. Uredil sem tinyurl: https://tinyurl.com/escfantasy
+
+Tale postavljen sistem je fakin zakon. Kosilo ta teden? On me! Preferečno torek/sreda, ampak sem prilagodljiv :)
+
+ One attachment
+  •  Scanned by Gmail
+
+Črt Jaklič
+12:13 AM (8 hours ago)
+to me
+
+Sorry za multiple emails, ampak čisto sem navdušen pa sem si že dvakrat rekel da bom šel spat and HERE I AM ONCE AGAIN.
+Sem šel pregledati lanske maile in ugotovil, kako sem se izognil presledkom, tako da sem sam sebi odgovoril na naslednje moje vprašanje.
+Eno vprašanje zate: se da kaj narediti glede teh multiple choice odgovorov, kjer bi ti onemogočalo, da zbereš več kot 10 odgovorov? Just asking. Vem, da je jeba, ampak vprašam, ker je bilo največkrat v feedbacku omenjeno kot pain point.
+Druga zadeva pa je, da razmišljam, da bi malce posodobil še druge tekste (poleg indeksa), recimo da bi pri Glasovanje strani dodali kaj basic teksta na vrhu: praktično samo navodila, naj folk to izpolni samo enkrat, da se začne glasovat ob začetku prenosa - čeprav bo odprto že prej - in da se oddaja napovedi zaklene eno minuto po koncu televotinga - mam filing, da bo tako bolj vidno (pa malce manj posla zame).
+
+Toliko, zdej grem pa res spat. Sva na vezi! :)
+
+
+Črt Jaklič (gmail.com)
+​hello. 
+
+1) ja, sorry, vsa vprašanja/odgovori so splavali, ko izbrišem bazo :S to je mal smotan sistem, sam heroku as a service trenutno nima možnosti, da bi bazo ohranil, ne bi pa plačeval 5eur na mesec zanjo.
+
+2) več kot 10 odgovorov - I know. zdej, pravilen postopek bi bil, da bi to nekako na frontendu (preden človek odda) že zvalidirali, ampak se spomnim, da to ni bilo tolk trivialno (due to poor design of course) narest lani, letos pa absolutno na žalost nimam časa (imam eno delovno delegacijo do četrtka in sem swamped), tako da dejmo letos tako pustit kot je. Če hočeš, lahko v gradingu (kjer že vidiš, da je nekdo zaf*) samo enostavno pobrišeš zadnjo vrednost (arbitrarno) in še1x pogradeaš, da dobi tud ta človek točke.
+
+3) pošlji mi spremembe, pa jih poskusim vključit notr. samo napiši "ta text gre na stran /vote pred naslov xyz"
+
+​
+
+
+Matej Meglič 
+matej@matejmeglic.com
++386 41 264 960
+
+matejmeglic.com
+
+
 {% extends "polls/base.html" %} {% block content %}
 
 <section class="get-in-touch">
-  <h1 class="title">Eurovision Fantasy</h1>
-  <h2 class="title">Edina kuhinja, ki je poštena</h2>
+  <h1 class="title">Eurovision Fantasy 2025</h1>
+  <h2 class="title">Nova kuhinjska edicija</h2>
 
   <br /><br />
   <p>Evrovizijski pozdrav na največji zabavi tega leta!</p>
   <p class="text-justify">
     Smo <b><a href="mailto:barbara.vidmajer@gmail.com">Barbara</a></b>
-    <i>[evrovizijska odposlanka in kandidatka za prva mesta]</i>,
+    <i>[evrovizijska odposlanka z insajderskimi informacijami]</i>,
     <a href="mailto:crt.jaklic@gmail.com"><b>Črt</b></a>
     <i>[kuhinjski mojster vprašanj in ocenjevanja]</i> in
     <a href="mailto:matej@matejmeglic.com"><b>Matej</b></a>
     <i
       >[ki realno nima nič zraven, samo všeč mu je in je napisal ta app, pa se
-      zdaj nekaj štuli]</i
+      zdaj nekaj štuli</i
     >
-    in upamo, da bomo lahko pripomogli k dvigu navdušenja ob evrovizijskem
-    tekmovanju na nov, nesluten nivo.
+    in že drugo leto zapored se trudimo za dvig navdušenja ob evrovizijskem tekmovanju na nov, povsem nesluten nivo.
   </p>
   <p class="text-justify">
-    ESC Fantasy je tekmovanje, kjer vsak (ne)poznavalec pokaže svoje barve in se
-    poteguje za večno čast in slavo. O zmagovalcu tega tekmovanja se govori vse
-    leto, izkušnje veljajo, stavnice kar pokajo od energije, predpredzadnji iz
-    prejšnjega leta pa v upanju na boljšo uvrstitev celo spišejo aplikacijo, da
-    bi le lahko zadovoljili bogove Evrovizije.
+    ESC Fantasy je tekmovanje, kjer vsak (ne)poznavalec pokaže svoje mavrične barve in se poteguje za večno čast in slavo. O zmagovalcu tega tekmovanja se govori vse leto, izkušnje veljajo, stavnice kar pokajo od energije, predpredzadnji iz prejšnjega leta pa v upanju na boljšo uvrstitev celo spišejo aplikacijo, da bi le lahko zadovoljili bogove Evrovizije.
   </p>
   <p class="text-justify">
-    Vaša naloga je, da svoje kavč komentarje pretvorite v svoje končne napovedi
-    za vse tri evrovizijske večere, posledično pa boste za vse pravilne odgovore
-    prejeli točke. V obeh polfinalih je potrebno napovedati finaliste in
-    odgovoriti na dodatno vprašanje, v finalu pa vas čaka širši nabor vprašanj.
+    Vaša naloga je, da svoje kavč komentarje pretvorite v svoje končne napovedi za vse tri evrovizijske večere, posledično pa boste za vse pravilne odgovore prejeli točke. V obeh polfinalih je potrebno napovedati finaliste in odgovoriti na dodatno vprašanje, v finalu pa vas čaka širši nabor vprašanj. Totalno veselje!
   </p>
-  <p>Totalno veselje, kajne?</p>
+  <p>Najboljše uvrščeni posamezniki in posameznice lanskega tekmovanja:</p>
+<ol>
+  <li>1. mesto: Ana Bešter (173 točk)</li>
+  <li>2. mesto: Ksenija Vidmajer (172 točk)</li>
+  <li>3. mesto: Bernarda Vidmajer (171 točk)</li>
+</ol>
   <br />
   <h3 class="title">Pravila igre</h3>
   <ul class="text-justify">
+    <li>Nujno vpiši svoje ime oz. vzdevek ter pravilen e-mail, da se najdeš med rezultati.</li>
     <li>
-      Nujno vpiši svoje ime oz. vzdevek ter pravilen e-mail, da se najdeš med
-      rezultati.
+      Tvoj e-mail nikoli ne bo viden na internetu, služi samo kot ključ za štetje
+      točk in za obvestila.
     </li>
     <li>
-      Tvoj e-mail nikoli ne bo viden na internetu, služi samo kot ključ za
-      štetje točk in za obvestilo o naslednjem tekmovanju.
+      Pozorno sledi navodilom, poglej si točkovanje vsakega vprašanja in klikni izbran odgovor (ali več njih).
     </li>
-    <li>
-      Pozorno sledi navodilom aplikacije, poglej si točkovanje vsakega vprašanja
-      in klikni na svojo napoved (ali več njih).
-    </li>
-    <li>Napovedi oddaj do konca televotinga - drugače ne bo štel.</li>
+    <li>Napovedi oddaj do konca televotinga - drugače ne bodo štele.</li>
     <li>Posamičen kviz izpolniš le in samo enkrat.</li>
   </ul>
   <br />
   <p class="text-justify">
-    Po oddanih napovedi počakaj na svoj nabirek točk, ki bo znan nekaj trenutkov
-    po uradni razglasitvi <a href="/results">tukaj</a>. Končnega zmagovalca čaka
-    nagrada s strani organizacijskega odbora, vsi ostali pa se lahko s svojim
-    rezultatom hvalite prijateljem, znancem in neznancem.
+    Po oddanih napovedi počakaj na svoj nabirek točk, ki bo znan nekaj trenutkov po uradni razglasitvi <a href="/results">tukaj</a>. Končnega zmagovalca čaka nagrada s strani organizacijskega odbora (namig: nagrada pride direktno iz evrovizijske Švice!), vsi ostali pa se lahko s svojim rezultatom hvalite prijateljem, znancem in neznancem.
   </p>
   <p class="text-justify">
-    Dodatna opomba: ker poleg splošnega zmagoslavja šteje predvsem to, da
-    premagaš sebi ljube ljudi, lahko v vnosu vpišeš tudi ime skupine, da se
-    boste lažje našli. Tukaj so kode vnaprej prijavljenih skupin:
-    <i>NM / carmenmanet / outbrain / kukovnica / velesovo</i>, seveda pa so
-    dobrodošle tudi vse ostale družbe.
+    Dodatna opomba: ker poleg splošnega zmagoslavja šteje predvsem to, da premagaš sebi ljube ljudi, lahko v vnosu vpišeš tudi ime skupine, da se boste lažje našli. Tukaj so kode vnaprej prijavljenih skupin: <i>NM / carmenmanet / outbrain / kukovnica / velesovo / RTV</i>, seveda pa so dobrodošle tudi vse ostale družbe.
   </p>
 
   <br />
@@ -72,7 +135,11 @@
   <div class="contact-form row">
     <div class="form-field col-lg-12">
       <a href="{% url 'vote' %}">
-        <input class="submit-btn" type="submit" value="Oddaj svoje napovedi!" />
+        <input
+          class="submit-btn"
+          type="submit"
+          value="Oddaj svoje napovedi!"
+        />
       </a>
     </div>
   </div>
