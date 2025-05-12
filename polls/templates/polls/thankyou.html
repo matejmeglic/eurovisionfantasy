@@ -1,11 +1,26 @@
 {% extends "polls/base.html" %} {% block content %}
 
 <section class="get-in-touch">
-  <h1 class="title">Cool... Si oddal/a!</h1>
+  <h1 class="title">To je to - napovedi oddane!</h1>
 
+  <p class="p_align">Kaj pa sedaj?</p>
+  <ul>
+    <li>Uživaš v Evroviziji.</li>
+    <li>
+      Spremljaš spletno stran, da vidiš rezultate, ki bodo znani (če bo šlo pri
+      ocenjevanju vse po planu) v nekaj minutah po končanem evrovizijskem dogodku.
+    </li>
+    <li>
+      Začneš razmišlati, kako se boš hvalil/a, če ti gre dobro oziroma kako hitro bo naslednja Evrovizija,
+      v kolikor je bila spet kuhinja.
+    </li>
+    <li>Lahko tudi pohvališ app in organizacijskemu odboru polepšaš dan!</li>
+  </ul>
+  <br /><br />
+  <p class="title">Kako si odgovoril/a?</p>
   <p class="p_align">
     To je zadnje mesto, kjer vidiš svoje rezultate. Naredi fotko, da lahko potem
-    primerjaš z drugimi
+    primerjaš svoje napovedi z drugimi!
   </p>
   <ul>
     {% for answer in answers %}
@@ -13,24 +28,6 @@
     {% endfor %}
   </ul>
   <br /><br />
-
-  <p class="title">Kaj pa zdaj?</p>
-
-  <ul>
-    <li>Ja, uživaj v Evroviziji.</li>
-    <li>
-      Spremljaš spletno stran, da vidiš rezultate, ki bodo znani (če bo šlo pri
-      ocenjevanju vse po planu) v nekaj minutah po končanem glasovanju za
-      Evrovizijo.
-    </li>
-    <li>
-      Potem se pa človek lahko počasi začne hvalit, ane? Ali pa se pripravljat
-      za naslednje leto, če rezultati niso neki?
-    </li>
-    <li>Lahko tudi pohvališ app - ne bova nič zamerila X)</li>
-  </ul>
-  <br /><br />
-
   <div class="contact-form row">
     <a href="/"><input class="submit-btn" value="Čakat grem rezultate" /></a>
   </div>

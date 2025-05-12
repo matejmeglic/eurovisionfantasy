@@ -29,6 +29,17 @@
             <input type="text" class="input-text js-input" id="group" name="group"></input>
         </div>
 
+        <br />
+        <p>Osnovne kuharske usmeritve</p>
+        <ul>
+           <li>Točkovanje posameznega vprašanja je zapisano pod vprašanjem.</li>
+           <li>Rok za oddajo napovedi je ena minuta po koncu telefonskega glasovanja.</li>
+           <li>Svoje napovedi oddaš le enkrat.</li>
+           <li>Rezultati bodo znani nekaj minut po koncu prenosa dogodka.</li>
+           <li>Srečno!</li>
+       </ul>
+       <br />
+
         {% for question in questions %}
         <p class="subtitle_question">Vprašanje {{forloop.counter}}</p>
         <p class="subtitle">{{ question.question }}</p>
@@ -132,10 +143,10 @@
         <div class="form-field col-xs-12">
             <ul>
                 <li>Še enkrat preglej svoje odgovore.</li>
-                <li>Če nisi odgovoril/a na vprašanje, ne bo točk.</li>
-                <li>Ko oddaš vprašalnik, ni poti nazaj.</li>
+                <li>Če na vprašanje nisi odgovoril/a, ne bo točk.</li>
+                <li>Ko oddaš svoja predvidevanja, ni poti nazaj.</li>
             </ul>
-            <input class="submit-btn" type="submit" value="Oddaj svoj glas">
+            <input class="submit-btn" type="submit" value="ODDAJ SVOJE NAPOVEDI">
         </div>
     </form>
 
