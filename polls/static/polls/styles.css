@@ -209,14 +209,17 @@ ul.no_bullets {
 }
 
 .answer-box {
-    border: 3px solid transparent;
+    border: 3px solid;
+    border-image-slice: 1;
+    border-width: 3px;
     border-radius: 20px;
-    padding: 16px;
+    padding: 4px 12px;
     margin-bottom: 20px;
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    background-image:
-        linear-gradient(#fff, #fff),
-        linear-gradient(to right, #f4524d, #5543ca);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-image-source: linear-gradient(to right, #f4524d, #5543ca);
+
+    /* Prevent text overflow */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
 }
