@@ -11,6 +11,7 @@ from django.utils import timezone
 from django.contrib import messages
 from operator import itemgetter
 from django.contrib.auth.decorators import login_required
+from collections import Counter
 import math
 
 
@@ -169,6 +170,7 @@ def dryRunGrades(request):
     active_question_list = [int(x.strip()) for x in active_polls[0]["question_ids"].split(',') if x]  
     graded_questions = list(request.POST.items())
     graded_questions.pop(0) #remove middleware csrf key
+    countSelections = 0 #20250516 - placeholder for correct rendering of multiselect counters in case a person puts in more than X values (should be handled on the FE)
 
     graded_questions_parsed=[]
 
@@ -261,6 +263,10 @@ def dryRunGrades(request):
                                     grade_calc = 0
                                 else:
                                     grade_calc = grade_calc_matrix[len(correct_values)-1]
+                            #20250516 - add special value for how many values were selected (eg - only ten should be selected - this should be handled on the FE but here we are)
+                            countSelections = len(answer_values)
+                            
+                            
                         elif answer.get("value") == grade.get("question_answer"): #else: normal condition, assign grade
                             grade_calc = question.get("question_grade")
                 #build answers context
@@ -270,13 +276,23 @@ def dryRunGrades(request):
                         "userName": answer.get("userName"),
                         "question_id": answer.get("question_id"),
                         "value": answer.get("value"),
-                        "grade": grade_calc,               
+                        "grade": grade_calc,
+                        "questionType" : question.get("question_type"),
+                        "countSelections": countSelections,           
                         }
                 #print(content)
         answers.append(content)
+        
+        #20250516 - add checks for duplicated submissions
+        user_emails = [answer["userEmail"] for answer in answers]
+        email_counts = Counter(user_emails)
+        duplicatedEmails = [email for email, count in email_counts.items() if count > 1]
+        if len(duplicatedEmails) == 0:
+            duplicatedEmails = ["Ni podvojenih emailov"]
+        
+        #20250516 - 
 
-
-    context = {"answers": answers, "grades":graded_questions_parsed_object, "questions":eligible_questions}
+    context = {"answers": answers, "grades":graded_questions_parsed_object, "questions":eligible_questions, "duplicatedEmails":duplicatedEmails}
     #print(context)
     #return HttpResponseRedirect("") #testEnv
     return render(request, "polls/checkresults.html", context)

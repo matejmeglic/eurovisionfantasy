@@ -11,7 +11,14 @@
   >
     {% csrf_token %} {% if error_message %}
     <p><strong>{{error_message}}</strong></p>
-    {% endif %} {% for question in questions %}
+    {% endif %} <br />
+    <p><strong>Podvojeni vnosi (preveri in odstrani v adminu):</strong></p>
+    <ul>
+    {% for entry in duplicatedEmails %}
+    <li>{{entry}}</li>
+    {% endfor %}</ul><br /><br />
+
+    {% for question in questions %}
     <div>
       <h3 class="subtitle_question p_align">
         Vprašanje {{forloop.counter}}: {{question.question}}
@@ -36,6 +43,9 @@
 
       <p class="p_align">{{answer.userName}} - {{answer.value}}</p>
       <div class="p_align">
+        {% if answer.questionType != "multipleselect" %}
+        <span class="p_align">Število odgovorov: {{answer.countSelections}}  -  </span>
+        {% endif %} 
         <input
           type=" number"
           class="input-text js-input"
