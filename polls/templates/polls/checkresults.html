@@ -23,12 +23,12 @@
     {% if selectedTooMany|length > 0 %}
     <ul>
     {% for entry in selectedTooMany %}
-    <li><strong>{{entry.userName}} - {{entry.userEmail}}</strong> je pri vprašanju 
+    <li>{{entry.userName}} - {{entry.userEmail}} je pri vprašanju 
       {% for question in questions %}
       {% if question.id == entry.question_id %}
       <strong>{{question.question}}</strong>
       {% endif %}
-      {% endfor %} izbral/a {{entry.countSelections}} namesto {{entry.max_choices}}</li>
+      {% endfor %} izbral/a {{entry.countSelections}} namesto {{entry.max_choices} odgovorov.}</li><br />
     {% endfor %}</ul>
     {% else %}
     <p>Vsi igralci so označili pravilno. Hudo.</p>
