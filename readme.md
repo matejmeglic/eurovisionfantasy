@@ -154,3 +154,4 @@ Question types:
 - 2h fix results page (FE + counter) + dns - 38
 - 2h bugfix and results rendering - 40
 - 1h for finale (bad code, just replicated /results) - 41
+- 2h for extra checks on dryRun, more notably case where same email entered two questionnaires and a case for too many multipleselects (and some styling) - 43
