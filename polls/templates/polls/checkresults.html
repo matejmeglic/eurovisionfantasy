@@ -18,6 +18,23 @@
     <li>{{entry}}</li>
     {% endfor %}</ul><br /><br />
 
+
+    <p><strong>Preveč obkljukanih možnosti:</strong></p>
+    {% if selectedTooMany|length > 0 %}
+    <ul>
+    {% for entry in selectedTooMany %}
+    <li>{{entry.userName}} - {{entry.userEmail}} je pri vprašanju 
+      {% for question in questions %}
+      {% if question.question_id == entry.question_id %}
+      {{question.question}}
+      {% endif %}
+      {% endfor %} izbral/a {{entry.countSelections}} namesto {{entry.max_choices}}</li>
+    {% endfor %}</ul>
+    {% else %}
+    <p>Vsi igralci so označili pravilno. Hudo.</p>
+    <br /><br />
+    
+
     {% for question in questions %}
     <div>
       <h3 class="subtitle_question p_align">

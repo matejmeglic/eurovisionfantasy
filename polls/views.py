@@ -295,10 +295,30 @@ def dryRunGrades(request):
         })
         if len(duplicatedEmails) == 0:
             duplicatedEmails = ["Ni podvojenih emailov"]
-        
-        #20250516 - 
 
-    context = {"answers": answers, "grades":graded_questions_parsed_object, "questions":eligible_questions, "duplicatedEmails":duplicatedEmails}
+        #20250516 - add check for selectedTooMany options in multipleSelect (render on top of template)
+        question_lookup = {q["id"]: q for q in eligible_questions}
+        selectedTooMany = []
+
+        for answer in answers:
+            if answer.get("questionType") == "multipleselect":
+                question_id = answer.get("question_id")
+                count_selections = answer.get("countSelections")
+
+                question = question_lookup.get(question_id)
+
+                if question:
+                    max_choices = question.get("max_choices")
+                    if max_choices is not None and count_selections > max_choices:
+                        selectedTooMany.append({
+                            "userEmail": answer.get("userEmail"),
+                            "userName": answer.get("userName"),
+                            "question_id": question_id,
+                            "max_choices": max_choices,
+                            "countSelections": count_selections,
+                        })
+
+    context = {"answers": answers, "grades":graded_questions_parsed_object, "questions":eligible_questions, "duplicatedEmails":duplicatedEmails, "selectedTooMany": selectedTooMany}
     #print(context)
     #return HttpResponseRedirect("") #testEnv
     return render(request, "polls/checkresults.html", context)
