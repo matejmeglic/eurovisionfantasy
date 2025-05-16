@@ -41,6 +41,7 @@
       {% endif %} {% endfor %}<br />
       {% for answer in answers %} {% if question.id == answer.question_id %}
 
+      <div class="answer-box">
       <p class="p_align">{{answer.userName}} - {{answer.value}} {% if answer.questionType == "multipleselect" %}
          Število oddanih držav: {{answer.countSelections}} 
         {% endif %} </p>
@@ -53,6 +54,7 @@
           value="{{answer.grade}}"
         />
       </div>
+    </div>
 
       {% endif %} {% endfor %}
     </div>

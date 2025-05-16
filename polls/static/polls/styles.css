@@ -10,11 +10,13 @@
 /* Large Devices, .visible-lg-* */
 @media (min-width: 1200px) {}
 
-html, body {
-  overflow-x: hidden;
-}
+html,
 body {
-  position: relative
+    overflow-x: hidden;
+}
+
+body {
+    position: relative
 }
 
 .get-in-touch {
@@ -194,11 +196,27 @@ body {
 }
 
 ul.no_bullets {
-    list-style-type: none; /* Remove bullets */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margins */
-  }
+    list-style-type: none;
+    /* Remove bullets */
+    padding: 0;
+    /* Remove padding */
+    margin: 0;
+    /* Remove margins */
+}
 
 .small_font {
     font-size: 85%;
+}
+
+.answer-box {
+    border: 3px solid transparent;
+    border-radius: 20px;
+    padding: 16px;
+    margin-bottom: 20px;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    background-image:
+        linear-gradient(#fff, #fff),
+        linear-gradient(to right, #f4524d, #5543ca);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
