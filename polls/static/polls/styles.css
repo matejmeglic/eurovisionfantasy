@@ -222,4 +222,14 @@ ul.no_bullets {
     overflow-wrap: break-word;
     word-break: break-word;
     white-space: normal;
+    overflow: hidden;
+}
+
+.answer-box div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Adds spacing between span and input */
+    flex-wrap: wrap;
+    /* Allows wrapping on small screens */
 }
