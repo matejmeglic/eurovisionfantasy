@@ -284,9 +284,15 @@ def dryRunGrades(request):
         answers.append(content)
         
         #20250516 - add checks for duplicated submissions
-        user_emails = [answer["userEmail"] for answer in answers]
-        email_counts = Counter(user_emails)
-        duplicatedEmails = [email for email, count in email_counts.items() if count > 1]
+        email_question_pairs = [
+            (answer["userEmail"], answer["question_id"]) for answer in answers
+        ]
+        # Count how many times each (email, question_id) pair appears
+        pair_counts = Counter(email_question_pairs)
+        # Find duplicates based on email + question_id
+        duplicatedEmails = list({
+            email for (email, question_id), count in pair_counts.items() if count > 1
+        })
         if len(duplicatedEmails) == 0:
             duplicatedEmails = ["Ni podvojenih emailov"]
         

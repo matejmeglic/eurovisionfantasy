@@ -41,11 +41,10 @@
       {% endif %} {% endfor %}<br />
       {% for answer in answers %} {% if question.id == answer.question_id %}
 
-      <p class="p_align">{{answer.userName}} - {{answer.value}}</p>
+      <p class="p_align">{{answer.userName}} - {{answer.value}} {% if answer.questionType == "multipleselect" %}
+         Število oddanih držav: {{answer.countSelections}} 
+        {% endif %} </p>
       <div class="p_align">
-        {% if answer.questionType != "multipleselect" %}
-        <span class="p_align">Število odgovorov: {{answer.countSelections}}  -  </span>
-        {% endif %} 
         <input
           type=" number"
           class="input-text js-input"
